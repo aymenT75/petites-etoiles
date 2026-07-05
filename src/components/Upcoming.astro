@@ -1,0 +1,26 @@
+---
+const prophets = [
+  { emoji: '✨', name: 'Nouh ﷺ',      ar: 'نوح' },
+  { emoji: '🌊', name: 'Ibrahim ﷺ',   ar: 'إبراهيم' },
+  { emoji: '🔥', name: 'Moussa ﷺ',    ar: 'موسى' },
+  { emoji: '❄️', name: 'Issa ﷺ',      ar: 'عيسى' },
+  { emoji: '🌿', name: 'Youssouf ﷺ',  ar: 'يوسف' },
+  { emoji: '🌙', name: 'Mohammed ﷺ',  ar: 'محمد' },
+];
+---
+<div class="divider"></div>
+<section id="prochains" style="padding:3rem 0;">
+  <div style="text-align:center;margin-bottom:1.5rem;">
+    <div class="section-tag" data-i18n="upcoming.tag">Prochainement</div>
+    <h3 style="font-size:1.1rem;color:var(--text-muted)" data-i18n="upcoming.title">La saga des Prophètes continue…</h3>
+  </div>
+  <div style="overflow:hidden;mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent)">
+    <div class="ribbon-track" id="ribbon">
+      {[...prophets, ...prophets].map((p) => (
+        <div class="ribbon-item">
+          {p.emoji} <span class="prophet">{p.name}</span> <span class="ar">{p.ar}</span> <span class="badge">Bientôt</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
