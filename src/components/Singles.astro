@@ -1,0 +1,88 @@
+---
+const singles = [
+  {
+    cover: '/pochette-ar.jpg',
+    alt: 'آدم آدم — Petites Étoiles',
+    lang: 'عربي',
+    titleAr: 'آدم آدم',
+    titleLatin: 'Adam Adam — Arabe',
+    spotify: 'https://open.spotify.com/track/4dPppcj8sa60d8HVhk3Bt7',
+    apple: 'https://music.apple.com/fr/album/6787249130',
+    youtube: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    deezer: 'https://www.deezer.com/fr/album/1020176011',
+    playTitle: 'Écouter',
+    delay: '',
+  },
+  {
+    cover: '/pochette-en.jpg',
+    alt: 'Oh Adam, Oh Adam — Petites Étoiles',
+    lang: 'EN',
+    titleAr: 'Oh Adam, Oh Adam',
+    titleLatin: 'English Version',
+    spotify: 'https://open.spotify.com/track/2rALeuVZkCVSOK4KY8ceHn',
+    apple: 'https://music.apple.com/fr/album/oh-adam-oh-adam-single/6787272618',
+    youtube: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    deezer: 'https://www.deezer.com/fr/album/1020136401',
+    playTitle: 'Listen',
+    delay: 'reveal-delay-1',
+    latinStyle: 'font-family:var(--font-main);font-size:1.1rem',
+  },
+  {
+    cover: '/pochette-ur.jpg',
+    alt: 'آدم (Adam) — Petites Étoiles',
+    lang: 'اردو',
+    titleAr: 'آدم (Adam)',
+    titleLatin: 'Version Ourdou',
+    spotify: 'https://open.spotify.com/track/4YocydKNWrq0c00PaQdimq',
+    apple: 'https://music.apple.com/fr/album/6787288259',
+    youtube: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    deezer: 'https://www.deezer.com/fr/album/1020175711',
+    playTitle: 'سنیں',
+    delay: 'reveal-delay-2',
+  },
+  {
+    cover: '/pochette-id.jpg',
+    alt: 'Adam, Manusia Pertama — Petites Étoiles',
+    lang: 'ID',
+    titleAr: 'Adam, Manusia Pertama',
+    titleLatin: 'Version Indonésienne',
+    spotify: 'https://open.spotify.com/track/5Qw8tahlCqWibUOUTq02tG',
+    apple: 'https://music.apple.com/fr/album/adam-manusia-pertama-single/6787136721',
+    youtube: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    deezer: 'https://www.deezer.com/fr/album/1019989681',
+    playTitle: 'Dengarkan',
+    delay: 'reveal-delay-3',
+    latinStyle: 'font-family:var(--font-main);font-size:1rem',
+  },
+];
+---
+<section id="musique">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag" data-i18n="music.tag">Nos singles</div>
+      <h2 class="section-title" data-i18n="music.title">La saga du <em>Prophète Adam</em></h2>
+      <p class="section-desc" data-i18n="music.desc">Le premier single de Petites Étoiles raconte l'histoire d'Adam ﷺ en 4 langues — pour atteindre chaque enfant, partout dans le monde.</p>
+    </div>
+    <div class="singles-grid">
+      {singles.map((s) => (
+        <div class={`single-card reveal ${s.delay}`}>
+          <div class="single-cover">
+            <img src={s.cover} alt={s.alt} loading="lazy" />
+            <span class="single-cover-lang">{s.lang}</span>
+            <a href={s.spotify} target="_blank" class="play-btn" title={s.playTitle}>▶</a>
+          </div>
+          <div class="single-info">
+            <div class="single-title-ar" style={s.latinStyle}>{s.titleAr}</div>
+            <div class="single-title-latin">{s.titleLatin}</div>
+            <div class="single-streaming">
+              <a href={s.spotify} target="_blank" class="stream-link spotify">🎵 Spotify</a>
+              <a href={s.apple}   target="_blank" class="stream-link apple">🎵 Apple</a>
+              <a href={s.youtube} target="_blank" class="stream-link youtube">▶ YouTube</a>
+              <a href={s.deezer}  target="_blank" class="stream-link deezer">🎵 Deezer</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
