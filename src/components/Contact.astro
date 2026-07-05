@@ -1,0 +1,81 @@
+---
+---
+<div class="divider"></div>
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag" data-i18n="contact.tag">Contact</div>
+      <h2 class="section-title" data-i18n="contact.title">On adore <em>vous entendre</em></h2>
+      <p class="section-desc" data-i18n="contact.desc">Une question, une suggestion, un projet de collaboration ? Écrivez-nous !</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-form-wrap reveal">
+        <form class="contact-form" id="contact-form" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" data-i18n="contact.name">Votre prénom</label>
+              <input type="text" id="name" name="name" placeholder="Aicha, Omar..." required />
+            </div>
+            <div class="form-group">
+              <label for="email" data-i18n="contact.email">Votre email</label>
+              <input type="email" id="email" name="email" placeholder="vous@exemple.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject" data-i18n="contact.subject">Sujet</label>
+            <select id="subject" name="subject">
+              <option value="question" data-i18n="contact.opt1">Une question générale</option>
+              <option value="collab" data-i18n="contact.opt2">Proposition de collaboration</option>
+              <option value="presse" data-i18n="contact.opt3">Demande presse / média</option>
+              <option value="autre" data-i18n="contact.opt4">Autre chose</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message" data-i18n="contact.message">Votre message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Écrivez votre message ici..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            <span data-i18n="contact.send">Envoyer le message</span> ✉️
+          </button>
+        </form>
+        <div class="contact-success" id="contact-success" style="display:none">
+          <div class="success-icon">✅</div>
+          <h3 data-i18n="contact.successTitle">Message envoyé !</h3>
+          <p data-i18n="contact.successDesc">Nous vous répondrons sous 48h. Jazakallahu khairan ! 🌙</p>
+        </div>
+      </div>
+
+      <div class="contact-channels reveal reveal-delay-2">
+        <div class="channel-card">
+          <div class="channel-icon">📧</div>
+          <div class="channel-info">
+            <div class="channel-name" data-i18n="contact.emailLabel">Email direct</div>
+            <a href="mailto:petitesetoilesmusic@gmail.com" class="channel-link">petitesetoilesmusic@gmail.com</a>
+          </div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-icon">▶️</div>
+          <div class="channel-info">
+            <div class="channel-name">YouTube</div>
+            <a href="https://youtube.com/@petitesetoiles" target="_blank" rel="noopener" class="channel-link">@petitesetoiles</a>
+          </div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-icon">📸</div>
+          <div class="channel-info">
+            <div class="channel-name">Instagram</div>
+            <a href="https://instagram.com/petitesetoilesmusic" target="_blank" rel="noopener" class="channel-link">@petitesetoilesmusic</a>
+          </div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-icon">🎵</div>
+          <div class="channel-info">
+            <div class="channel-name">TikTok</div>
+            <a href="https://tiktok.com/@petitesetoilesmusic" target="_blank" rel="noopener" class="channel-link">@petitesetoilesmusic</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
