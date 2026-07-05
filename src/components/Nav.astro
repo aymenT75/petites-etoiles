@@ -1,0 +1,46 @@
+---
+---
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon"><img src="/logo.png" alt="logo" /></div>
+    <div class="nav-logo-text">
+      <span>Petites Étoiles</span>
+      <span>نجوم صغيرة</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#musique" data-i18n="nav.music">Musique</a></li>
+    <li><a href="#boutique" data-i18n="nav.shop">Boutique</a></li>
+    <li><a href="#propos" data-i18n="nav.about">À propos</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ar')">AR</button>
+    </div>
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 <span data-i18n="nav.cart">Panier</span>
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </div>
+
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#musique" onclick="closeMenu()" data-i18n="nav.music">Musique</a>
+  <a href="#boutique" onclick="closeMenu()" data-i18n="nav.shop">Boutique</a>
+  <a href="#propos" onclick="closeMenu()" data-i18n="nav.about">À propos</a>
+  <a href="#contact" onclick="closeMenu()" data-i18n="nav.contact">Contact</a>
+  <div class="mobile-menu-langs">
+    <button class="lang-btn" onclick="setLang('fr');closeMenu()">FR</button>
+    <button class="lang-btn" onclick="setLang('en');closeMenu()">EN</button>
+    <button class="lang-btn" onclick="setLang('ar');closeMenu()">AR</button>
+  </div>
+</div>
