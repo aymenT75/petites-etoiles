@@ -1,0 +1,90 @@
+---
+---
+<canvas id="starfield"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('starfield') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+  let W: number, H: number, stars: any[] = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  function createStars(n: number) {
+    stars = [];
+    for (let i = 0; i < n; i++) {
+      const isBright = Math.random() > 0.82;
+      const isGiant  = Math.random() > 0.94;
+      stars.push({
+        x:      Math.random() * W,
+        y:      Math.random() * H,
+        r:      isGiant ? Math.random() * 2.2 + 1.4 : (isBright ? Math.random() * 1.2 + 0.7 : Math.random() * 0.8 + 0.15),
+        speed:  Math.random() * 0.006 + 0.001,
+        phase:  Math.random() * Math.PI * 2,
+        color:  Math.random() > 0.88 ? '#ffe8a0' : (Math.random() > 0.93 ? '#c8d8ff' : '#ffffff'),
+        bright: isBright,
+        giant:  isGiant,
+        rays:   isGiant && Math.random() > 0.4,
+        glowR:  isGiant ? Math.random() * 10 + 8 : (isBright ? Math.random() * 5 + 3 : 0)
+      });
+    }
+  }
+  function drawStar(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, color: string, alpha: number, glow: number, rays: boolean) {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    if (glow > 0) {
+      const grad = ctx.createRadialGradient(x, y, 0, x, y, glow * 2.5);
+      grad.addColorStop(0,   `rgba(255,255,220,${alpha * 0.5})`);
+      grad.addColorStop(0.4, `rgba(255,255,200,${alpha * 0.15})`);
+      grad.addColorStop(1,   'rgba(0,0,0,0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(x, y, glow * 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.shadowBlur  = glow > 0 ? glow * 1.5 : 0;
+    ctx.shadowColor = color;
+    ctx.fillStyle   = color;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+    if (rays && alpha > 0.3) {
+      ctx.shadowBlur  = glow * 2;
+      ctx.shadowColor = color;
+      ctx.strokeStyle = color;
+      ctx.lineWidth   = r * 0.35;
+      ctx.globalAlpha = alpha * 0.55;
+      const len = r * 5 + glow * 0.8;
+      ([[1,0],[0,1],[0.707,0.707],[-0.707,0.707]] as [number,number][]).forEach(([dx,dy]) => {
+        ctx.beginPath();
+        ctx.moveTo(x - dx*len*0.2, y - dy*len*0.2);
+        ctx.lineTo(x + dx*len, y + dy*len);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x + dx*len*0.2, y + dy*len*0.2);
+        ctx.lineTo(x - dx*len, y - dy*len);
+        ctx.stroke();
+      });
+    }
+    ctx.restore();
+  }
+  function draw(t: number) {
+    ctx.clearRect(0, 0, W, H);
+    stars.forEach(s => {
+      const raw   = Math.sin(t * s.speed * 60 + s.phase);
+      const alpha = s.giant
+        ? (raw + 1) / 2 * 0.75 + 0.25
+        : s.bright
+          ? (raw + 1) / 2 * 0.7 + 0.2
+          : (raw + 1) / 2 * 0.5 + 0.1;
+      drawStar(ctx, s.x, s.y, s.r, s.color, alpha, s.glowR, s.rays);
+    });
+    requestAnimationFrame(draw);
+  }
+  resize();
+  createStars(300);
+  window.addEventListener('resize', () => { resize(); createStars(300); });
+  requestAnimationFrame(draw);
+})();
+</script>
