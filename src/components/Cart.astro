@@ -1,0 +1,26 @@
+---
+---
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <h2>🛒 <span data-i18n="cart.title">Mon panier</span></h2>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <div class="cart-empty" id="cart-empty">
+      <div class="cart-empty-icon">🌙</div>
+      <div style="font-weight:600" data-i18n="cart.empty">Votre panier est vide</div>
+      <div style="font-size:0.8rem" data-i18n="cart.emptyDesc">Ajoutez des produits pour commencer</div>
+    </div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-total">
+      <span class="cart-total-label" data-i18n="cart.total">Total</span>
+      <span class="cart-total-amount" id="cart-total">€0,00</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()" data-i18n="cart.checkout">Passer la commande →</button>
+    <p class="secure-note">🔒 <span data-i18n="cart.secure">Paiement sécurisé via</span> <span>Stripe</span></p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
