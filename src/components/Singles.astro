@@ -1,7 +1,7 @@
 ---
 const singles = [
   {
-    cover: '/pochette-ar.jpg',
+    cover: '/petites-etoiles/pochette-ar.jpg',
     alt: 'آدم آدم — Petites Étoiles',
     lang: 'عربي',
     titleAr: 'آدم آدم',
@@ -14,7 +14,7 @@ const singles = [
     delay: '',
   },
   {
-    cover: '/pochette-en.jpg',
+    cover: '/petites-etoiles/pochette-en.jpg',
     alt: 'Oh Adam, Oh Adam — Petites Étoiles',
     lang: 'EN',
     titleAr: 'Oh Adam, Oh Adam',
@@ -28,7 +28,7 @@ const singles = [
     latinStyle: 'font-family:var(--font-main);font-size:1.1rem',
   },
   {
-    cover: '/pochette-ur.jpg',
+    cover: '/petites-etoiles/pochette-ur.jpg',
     alt: 'آدم (Adam) — Petites Étoiles',
     lang: 'اردو',
     titleAr: 'آدم (Adam)',
@@ -41,7 +41,7 @@ const singles = [
     delay: 'reveal-delay-2',
   },
   {
-    cover: '/pochette-id.jpg',
+    cover: '/petites-etoiles/pochette-id.jpg',
     alt: 'Adam, Manusia Pertama — Petites Étoiles',
     lang: 'ID',
     titleAr: 'Adam, Manusia Pertama',
@@ -54,6 +54,34 @@ const singles = [
     delay: 'reveal-delay-3',
     latinStyle: 'font-family:var(--font-main);font-size:1rem',
   },
+  {
+    cover: '/petites-etoiles/pochette-tr.jpg',
+    alt: "Adem'in Hikayesi — Petites Étoiles",
+    lang: 'TR',
+    titleAr: "Adem'in Hikayesi",
+    titleLatin: 'Version Turque',
+    spotify: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    apple: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    youtube: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    deezer: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    playTitle: 'Dinle',
+    delay: 'reveal-delay-4',
+    latinStyle: 'font-family:var(--font-main);font-size:1rem',
+  },
+  {
+    cover: '/petites-etoiles/pochette-fr.jpg',
+    alt: 'Adam le premier des hommes — Petites Étoiles',
+    lang: 'FR',
+    titleAr: 'Adam le premier',
+    titleLatin: 'Version Française',
+    spotify: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    apple: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    youtube: 'https://www.youtube.com/channel/UCfJ9NcSV_xrHX_HCBzmeiiw',
+    deezer: 'https://www.deezer.com/fr/artist/petites-etoiles',
+    playTitle: 'Écouter',
+    delay: 'reveal-delay-5',
+    latinStyle: 'font-family:var(--font-main);font-size:1rem',
+  },
 ];
 ---
 <section id="musique">
@@ -61,7 +89,7 @@ const singles = [
     <div class="section-header">
       <div class="section-tag" data-i18n="music.tag">Nos singles</div>
       <h2 class="section-title" data-i18n="music.title">La saga du <em>Prophète Adam</em></h2>
-      <p class="section-desc" data-i18n="music.desc">Le premier single de Petites Étoiles raconte l'histoire d'Adam ﷺ en 4 langues — pour atteindre chaque enfant, partout dans le monde.</p>
+      <p class="section-desc" data-i18n="music.desc">Le premier single de Petites Étoiles raconte l'histoire d'Adam ﷺ en 6 langues — pour atteindre chaque enfant, partout dans le monde.</p>
     </div>
     <div class="singles-grid">
       {singles.map((s) => (
