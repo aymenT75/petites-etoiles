@@ -1,5 +1,8 @@
 ---
+interface Props { home?: boolean }
+const { home = true } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const link = (hash: string) => home ? hash : `${base}/${hash}`;
 ---
 <footer class="site-footer">
   <div class="container">
@@ -31,15 +34,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="footer-nav">
         <div class="footer-nav-group">
           <div class="footer-nav-title" data-i18n="footer.music">Musique</div>
-          <a href="#musique" data-i18n="footer.singles">Les singles</a>
-          <a href="#boutique" data-i18n="footer.shop">Boutique</a>
+          <a href={link('#musique')} data-i18n="footer.singles">Les singles</a>
+          <a href={link('#boutique')} data-i18n="footer.shop">Boutique</a>
           <a href="https://open.spotify.com/artist/1vFzrbqXIWNLpmpy1mnNbD" target="_blank" rel="noopener">Spotify</a>
           <a href="https://music.youtube.com/@Petites%C3%89toiles-o5v" target="_blank" rel="noopener">YouTube Music</a>
         </div>
         <div class="footer-nav-group">
           <div class="footer-nav-title" data-i18n="footer.info">Informations</div>
-          <a href="#apropos" data-i18n="footer.about">À propos</a>
-          <a href="#contact" data-i18n="footer.contact">Contact</a>
+          <a href={link('#apropos')} data-i18n="footer.about">À propos</a>
+          <a href={link('#contact')} data-i18n="footer.contact">Contact</a>
           <a href="#" data-i18n="footer.press">Presse</a>
         </div>
         <div class="footer-nav-group">

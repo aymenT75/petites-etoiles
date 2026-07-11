@@ -1,8 +1,11 @@
 ---
+interface Props { home?: boolean }
+const { home = true } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const link = (hash: string) => home ? hash : `${base}/${hash}`;
 ---
 <nav id="navbar">
-  <a href="#hero" class="nav-logo">
+  <a href={home ? '#hero' : `${base}/`} class="nav-logo">
     <div class="nav-logo-icon">
       <img src={`${base}/logo-nav.png`} alt="Petites Étoiles" width="40" height="40" />
     </div>
@@ -13,10 +16,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </a>
 
   <ul class="nav-links">
-    <li><a href="#musique" data-i18n="nav.music">Musique</a></li>
-    <li><a href="#boutique" data-i18n="nav.shop">Boutique</a></li>
-    <li><a href="#apropos" data-i18n="nav.about">À propos</a></li>
-    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    <li><a href={link('#musique')} data-i18n="nav.music">Musique</a></li>
+    <li><a href={link('#boutique')} data-i18n="nav.shop">Boutique</a></li>
+    <li><a href={link('#apropos')} data-i18n="nav.about">À propos</a></li>
+    <li><a href={link('#contact')} data-i18n="nav.contact">Contact</a></li>
   </ul>
 
   <div class="nav-right">
@@ -37,10 +40,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#musique" onclick="closeMenu()" data-i18n="nav.music">Musique</a>
-  <a href="#boutique" onclick="closeMenu()" data-i18n="nav.shop">Boutique</a>
-  <a href="#apropos" onclick="closeMenu()" data-i18n="nav.about">À propos</a>
-  <a href="#contact" onclick="closeMenu()" data-i18n="nav.contact">Contact</a>
+  <a href={link('#musique')} onclick="closeMenu()" data-i18n="nav.music">Musique</a>
+  <a href={link('#boutique')} onclick="closeMenu()" data-i18n="nav.shop">Boutique</a>
+  <a href={link('#apropos')} onclick="closeMenu()" data-i18n="nav.about">À propos</a>
+  <a href={link('#contact')} onclick="closeMenu()" data-i18n="nav.contact">Contact</a>
   <div class="mobile-menu-langs">
     <button class="lang-btn" onclick="setLang('fr');closeMenu()">FR</button>
     <button class="lang-btn" onclick="setLang('en');closeMenu()">EN</button>
