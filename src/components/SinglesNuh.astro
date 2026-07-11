@@ -1,0 +1,67 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const singles = [
+  { cover: 'pochette-nuh-ar.jpg', audio: 'nuh-ar.mp3', alt: 'نوح، نوح — Petites Étoiles', lang: 'عربي', titleAr: 'نوح، نوح', titleLatin: 'Nuh Nabi — Arabe', delay: '' },
+  { cover: 'pochette-nuh-en.jpg', audio: 'nuh-en.mp3', alt: 'Nuh, Nuh — Petites Étoiles', lang: 'EN', titleAr: 'Tiny Ark Song', titleLatin: 'English Version', delay: 'reveal-delay-1', latinStyle: 'font-family:var(--font-main);font-size:1.1rem' },
+  { cover: 'pochette-nuh-ur.jpg', audio: 'nuh-ur.mp3', alt: 'نوح نبی کی کشتی — Petites Étoiles', lang: 'اردو', titleAr: 'نوح نبی کی کشتی', titleLatin: 'Version Ourdou', delay: 'reveal-delay-2' },
+  { cover: 'pochette-nuh-id.jpg', audio: 'nuh-id.mp3', alt: 'Perahu Nabi Nuh — Petites Étoiles', lang: 'ID', titleAr: 'Perahu Nabi Nuh', titleLatin: 'Version Indonésienne', delay: 'reveal-delay-3', latinStyle: 'font-family:var(--font-main);font-size:1rem' },
+  { cover: 'pochette-nuh-fr.jpg', audio: 'nuh-fr.mp3', alt: 'Petit Bateau de Nuh — Petites Étoiles', lang: 'FR', titleAr: 'Petit Bateau de Nuh', titleLatin: 'Version Française', delay: '', latinStyle: 'font-family:var(--font-main);font-size:1.1rem' },
+];
+---
+<div class="divider"></div>
+<section id="nuh">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Nos singles</div>
+      <h2 class="section-title">La saga du <em>Prophète Nouh</em></h2>
+      <p class="section-desc">Le 2ème single de Petites Étoiles raconte l'histoire de Nouh ﷺ et de l'arche — en 5 langues, pour le moment écoutable directement ici (les liens Spotify/Apple/YouTube/Deezer arrivent bientôt).</p>
+    </div>
+    <div class="singles-grid">
+      {singles.map((s, i) => (
+        <div class={`single-card reveal ${s.delay}`}>
+          <div class="single-cover">
+            <img src={`${base}/${s.cover}`} alt={s.alt} loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="single-cover-fallback"><span>✦</span></div>
+            <span class="single-cover-lang">{s.lang}</span>
+            <button class="play-btn" type="button" title="Écouter" onclick={`toggleNuhAudio(this, 'nuh-audio-${i}')`}>▶</button>
+            <audio id={`nuh-audio-${i}`} src={`${base}/audio/${s.audio}`} onended="this.parentElement.querySelector('.play-btn').textContent='▶'"></audio>
+          </div>
+          <div class="single-info">
+            <div class="single-title-ar" style={s.latinStyle}>{s.titleAr}</div>
+            <div class="single-title-latin">{s.titleLatin}</div>
+            <div class="single-streaming">
+              <span class="stream-link" style="opacity:0.6;cursor:default">🎧 Écoute directe</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #nuh .play-btn { opacity: 1; transform: scale(1); }
+</style>
+
+<script is:inline>
+function toggleNuhAudio(btn, audioId) {
+  const audio = document.getElementById(audioId);
+  document.querySelectorAll('#nuh audio').forEach((a) => {
+    if (a.id !== audioId && !a.paused) {
+      a.pause();
+      a.currentTime = 0;
+      const otherBtn = a.parentElement.querySelector('.play-btn');
+      if (otherBtn) otherBtn.textContent = '▶';
+    }
+  });
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = '⏸';
+  } else {
+    audio.pause();
+    btn.textContent = '▶';
+  }
+}
+window.toggleNuhAudio = toggleNuhAudio;
+</script>
