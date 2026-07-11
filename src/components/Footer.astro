@@ -1,11 +1,14 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
-          <span class="footer-logo-star">✦</span>
+          <div class="footer-logo-icon">
+            <img src={`${base}/logo-nav.png`} alt="Petites Étoiles" width="50" height="50" />
+          </div>
           <span class="footer-logo-text">Petites Étoiles</span>
         </div>
         <p class="footer-tagline" data-i18n="footer.tagline">De la musique qui élève les âmes.</p>
