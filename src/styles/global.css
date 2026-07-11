@@ -31,6 +31,14 @@ ul { list-style: none; }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-deep); }
 ::-webkit-scrollbar-thumb { background: var(--purple-mid); border-radius: 3px; }
+
+/* ── VIDÉO DE FOND — tout le site ── */
+.site-bg { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
+.site-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6) saturate(1.25); animation: kenburns 26s ease-in-out infinite alternate; }
+@keyframes kenburns { from { transform: scale(1.03); } to { transform: scale(1.12); } }
+.site-veil { position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--bg-deep); opacity: 0.3; transition: opacity 0.2s linear; }
+@media (prefers-reduced-motion: reduce) { .site-bg-video { animation: none; } }
+
 #starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 70px; background: rgba(6,0,18,0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: background var(--transition); }
 nav.scrolled { background: rgba(6,0,18,0.95); }
@@ -62,7 +70,7 @@ nav.scrolled { background: rgba(6,0,18,0.95); }
 .mobile-menu a:hover { color: var(--gold); background: var(--gold-dim); }
 .mobile-menu-langs { display: flex; gap: 0.5rem; padding: 0.75rem 1rem; }
 #hero { position: relative; z-index: 1; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 1.5rem 4rem; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: url('/hero-bg.jpg') center center / cover no-repeat; filter: brightness(0.55) saturate(1.3); z-index: 0; }
+
 .hero-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-60%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, rgba(212,168,67,0.06) 40%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 1; animation: pulse-glow 6s ease-in-out infinite; }
 @keyframes pulse-glow { 0%,100% { transform: translate(-50%,-60%) scale(1); opacity: 0.8; } 50% { transform: translate(-50%,-60%) scale(1.1); opacity: 1; } }
 .hero-inner { position: relative; z-index: 2; max-width: 720px; }

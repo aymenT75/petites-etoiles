@@ -1,0 +1,48 @@
+---
+// Vidéo de fond plein écran, fixe, sur tout le site.
+// Le voile (.site-veil) s'assombrit au scroll pour la lisibilité.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<div class="site-bg" aria-hidden="true">
+  <video
+    class="site-bg-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster={`${base}/hero-poster.jpg`}
+  >
+    <source src={`${base}/hero-video.mp4`} type="video/mp4" />
+  </video>
+</div>
+<div class="site-veil" id="site-veil" aria-hidden="true"></div>
+
+<script>
+  const bgVideo = document.querySelector('.site-bg-video') as HTMLVideoElement;
+  const veil = document.getElementById('site-veil') as HTMLElement;
+
+  if (bgVideo) {
+    bgVideo.muted = true;                      // garantit l'autoplay (iOS inclus)
+    bgVideo.play().catch(() => {});
+
+    // Pause quand l'onglet est caché (batterie)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) bgVideo.pause();
+      else bgVideo.play().catch(() => {});
+    });
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      bgVideo.pause();
+      bgVideo.removeAttribute('autoplay');
+    }
+  }
+
+  // Voile : léger sur le hero (0.3) → sombre dans les sections (0.78)
+  function updateVeil() {
+    const progress = Math.min(1, window.scrollY / (window.innerHeight * 0.9));
+    veil.style.opacity = (0.3 + progress * 0.48).toFixed(3);
+  }
+  window.addEventListener('scroll', updateVeil, { passive: true });
+  updateVeil();
+</script>
