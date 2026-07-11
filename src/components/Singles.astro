@@ -95,7 +95,8 @@ const singles = [
       {singles.map((s) => (
         <div class={`single-card reveal ${s.delay}`}>
           <div class="single-cover">
-            <img src={s.cover} alt={s.alt} loading="lazy" />
+            <img src={s.cover} alt={s.alt} loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="single-cover-fallback"><span>✦</span></div>
             <span class="single-cover-lang">{s.lang}</span>
             <a href={s.spotify} target="_blank" class="play-btn" title={s.playTitle}>▶</a>
           </div>

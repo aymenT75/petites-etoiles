@@ -111,6 +111,8 @@ section { position: relative; z-index: 1; padding: 6rem 1.5rem; }
 .single-cover { aspect-ratio: 1; position: relative; overflow: hidden; }
 .single-cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
 .single-card:hover .single-cover img { transform: scale(1.04); }
+.single-cover-fallback { display: none; width: 100%; height: 100%; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--bg-card), var(--bg-deep)); }
+.single-cover-fallback span { font-size: 2.5rem; color: var(--gold); opacity: 0.5; }
 .single-cover-lang { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 0.7rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; }
 .play-btn { position: absolute; bottom: 12px; right: 12px; width: 44px; height: 44px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--bg-deep); font-size: 1.1rem; opacity: 0; transform: scale(0.8); transition: all var(--transition); text-decoration: none; }
 .single-card:hover .play-btn { opacity: 1; transform: scale(1); }
