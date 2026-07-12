@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <div class="divider"></div>
 <section id="boutique">
@@ -117,85 +118,90 @@
         </div>
       </div>
 
-      <!-- Gourde -->
-      <div class="product-card reveal reveal-delay-1">
-        <span class="product-badge soon">Bientôt</span>
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <div class="product-image-emoji">🥤</div>
+      <!-- Gourdes -->
+      <a href={`${base}/gourdes`} class="product-card reveal reveal-delay-1" style="display:block;text-decoration:none;color:inherit">
+        <span class="product-badge new">Nouveau</span>
+        <div class="product-image product-image--photo">
+          <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
+          <img src={`${base}/gourde-mohammed.jpg`} alt="Gourdes — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="product-image-fallback" style="display:none"><span>🥤</span></div>
         </div>
         <div class="product-body">
-          <div class="product-name">Gourde enfant — Les Prophètes</div>
-          <div class="product-desc">Gourde inox illustrée aux couleurs de l'univers Petites Étoiles. Bientôt disponible.</div>
+          <div class="product-name">Gourdes — Les Prophètes</div>
+          <div class="product-desc">Gourdes inox illustrées, disponibles pour Mohamed, Adam, Souleymane et Moussa.</div>
           <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Bientôt disponible</div>
+            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <!-- Coque de téléphone -->
-      <div class="product-card reveal reveal-delay-2">
-        <span class="product-badge soon">Bientôt</span>
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <div class="product-image-emoji">📱</div>
+      <!-- Coques de téléphone -->
+      <a href={`${base}/coques-telephone`} class="product-card reveal reveal-delay-2" style="display:block;text-decoration:none;color:inherit">
+        <span class="product-badge new">Nouveau</span>
+        <div class="product-image product-image--photo">
+          <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
+          <img src={`${base}/tel-mohammed.jpg`} alt="Coques de téléphone — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="product-image-fallback" style="display:none"><span>📱</span></div>
         </div>
         <div class="product-body">
-          <div class="product-name">Coque de téléphone — Les Prophètes</div>
-          <div class="product-desc">Coque illustrée aux couleurs de l'univers Petites Étoiles, plusieurs modèles de téléphone. Bientôt disponible.</div>
+          <div class="product-name">Coques de téléphone — Les Prophètes</div>
+          <div class="product-desc">Plusieurs modèles illustrés : Mohamed, Adam, Souleymane, Nouh, Le Corbeau.</div>
           <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Bientôt disponible</div>
+            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <!-- Sweat à capuche -->
-      <div class="product-card reveal reveal-delay-3">
-        <span class="product-badge soon">Bientôt</span>
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <div class="product-image-emoji">🧥</div>
+      <!-- Sweats à capuche -->
+      <a href={`${base}/sweats`} class="product-card reveal reveal-delay-3" style="display:block;text-decoration:none;color:inherit">
+        <span class="product-badge new">Nouveau</span>
+        <div class="product-image product-image--photo">
+          <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
+          <img src={`${base}/sweat-mohammed.jpg`} alt="Sweats à capuche — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="product-image-fallback" style="display:none"><span>🧥</span></div>
         </div>
         <div class="product-body">
-          <div class="product-name">Sweat à capuche — Les Prophètes</div>
-          <div class="product-desc">Sweat à capuche enfant illustré à l'effigie des Prophètes. Bientôt disponible.</div>
+          <div class="product-name">Sweats à capuche — Les Prophètes</div>
+          <div class="product-desc">Sweats illustrés, disponibles pour Mohamed, Adam, Souleymane, Nouh et Le Corbeau.</div>
           <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Bientôt disponible</div>
+            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <!-- Pyjama -->
-      <div class="product-card reveal">
-        <span class="product-badge soon">Bientôt</span>
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <div class="product-image-emoji">🛌</div>
+      <!-- Pyjamas -->
+      <a href={`${base}/pyjamas`} class="product-card reveal" style="display:block;text-decoration:none;color:inherit">
+        <span class="product-badge new">Nouveau</span>
+        <div class="product-image product-image--photo">
+          <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
+          <img src={`${base}/pyjama-mohammed.jpg`} alt="Pyjamas — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="product-image-fallback" style="display:none"><span>🛌</span></div>
         </div>
         <div class="product-body">
-          <div class="product-name">Pyjama — Les Prophètes</div>
-          <div class="product-desc">Pyjama enfant illustré à l'effigie des Prophètes, pour de belles nuits étoilées. Bientôt disponible.</div>
+          <div class="product-name">Pyjamas — Les Prophètes</div>
+          <div class="product-desc">Pyjamas illustrés, disponibles pour Mohamed, Adam, Souleymane, Nouh et Moussa.</div>
           <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Bientôt disponible</div>
+            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <!-- Figurine articulée + t-shirt -->
-      <div class="product-card reveal reveal-delay-1">
-        <span class="product-badge soon">Bientôt</span>
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <div class="product-image-emoji">🧸</div>
+      <!-- Coffrets cadeaux -->
+      <a href={`${base}/coffrets`} class="product-card reveal reveal-delay-1" style="display:block;text-decoration:none;color:inherit">
+        <span class="product-badge new">Nouveau</span>
+        <div class="product-image product-image--photo">
+          <div class="product-image-bg" style="background:linear-gradient(135deg,#cfe8f5,#e8f4fb)"></div>
+          <img src={`${base}/coffret-moussa.jpg`} alt="Coffrets cadeaux — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="product-image-fallback" style="display:none"><span>🎁</span></div>
         </div>
         <div class="product-body">
-          <div class="product-name">Figurine articulée + T-shirt — Coffret cadeau</div>
-          <div class="product-desc">Figurine articulée d'un personnage de l'univers Petites Étoiles, offerte avec son t-shirt assorti. Bientôt disponible.</div>
+          <div class="product-name">Coffrets cadeaux — Les Prophètes</div>
+          <div class="product-desc">T-shirt assorti à des jouets d'éveil, dans un coffret prêt à offrir. Version Moussa disponible.</div>
           <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Bientôt disponible</div>
+            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- Jeu de cartes -->
       <div class="product-card reveal reveal-delay-2">
@@ -214,20 +220,21 @@
       </div>
 
       <!-- Lunchbox -->
-      <div class="product-card reveal reveal-delay-3">
-        <span class="product-badge soon">Bientôt</span>
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <div class="product-image-emoji">🍱</div>
+      <a href={`${base}/lunchbox`} class="product-card reveal reveal-delay-3" style="display:block;text-decoration:none;color:inherit">
+        <span class="product-badge new">Nouveau</span>
+        <div class="product-image product-image--photo">
+          <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
+          <img src={`${base}/lunchbox-mohammed.jpg`} alt="Lunchbox — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div class="product-image-fallback" style="display:none"><span>🍱</span></div>
         </div>
         <div class="product-body">
           <div class="product-name">Lunchbox — Les Prophètes</div>
-          <div class="product-desc">Boîte à repas illustrée aux couleurs de l'univers Petites Étoiles, idéale pour l'école. Bientôt disponible.</div>
+          <div class="product-desc">Boîtes à repas illustrées, disponibles pour Mohamed, Souleymane, Nouh et Moussa.</div>
           <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Bientôt disponible</div>
+            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- Albums illustrés -->
       <div class="product-card reveal">

@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Starfield from '../components/Starfield.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Cart from '../components/Cart.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title="Lunchbox — Petites Étoiles">
+  <Starfield />
+  <Nav home={false} />
+
+  <section id="lunchbox-page" style="padding-top:7rem">
+    <div class="container">
+      <a href={`${base}/`} class="back-link" style="display:inline-flex;align-items:center;gap:0.4rem;color:var(--text-muted);font-size:0.875rem;margin-bottom:1.5rem;">← Retour à l'accueil</a>
+      <div class="section-header">
+        <div class="section-tag">Boutique</div>
+        <h1 class="section-title">Les <em>lunchbox</em> Petites Étoiles</h1>
+        <p class="section-desc">Des boîtes à repas illustrées aux couleurs de l'univers Petites Étoiles, idéales pour l'école.</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Lunchbox Mohamed ﷺ — Enfant -->
+        <div class="product-card reveal">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
+            <img src={`${base}/lunchbox-mohammed.jpg`} alt="Lunchbox Mohamed ﷺ — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>🍱</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Lunchbox Mohamed ﷺ — Enfant</div>
+            <div class="product-desc">Lunchbox bleu marine — un chameau sous la lune et les étoiles.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Lunchbox Souleymane ﷺ — Enfant -->
+        <div class="product-card reveal reveal-delay-1">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
+            <img src={`${base}/lunchbox-souleymane.jpg`} alt="Lunchbox Souleymane ﷺ — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>🍱</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Lunchbox Souleymane ﷺ — Enfant</div>
+            <div class="product-desc">Lunchbox bleu marine — le château, le lion et les canards.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Lunchbox Nouh ﷺ — Enfant -->
+        <div class="product-card reveal reveal-delay-2">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#cfe8f5,#e8f4fb)"></div>
+            <img src={`${base}/lunchbox-nouh.jpg`} alt="Lunchbox Nouh ﷺ — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>🍱</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Lunchbox Nouh ﷺ — Enfant</div>
+            <div class="product-desc">Lunchbox bleu ciel — l'Arche de Noé.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Lunchbox Moussa ﷺ — Enfant -->
+        <div class="product-card reveal reveal-delay-3">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#f4f4f4,#ffffff)"></div>
+            <img src={`${base}/lunchbox-moussa.jpg`} alt="Lunchbox Moussa ﷺ — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>🍱</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Lunchbox Moussa ﷺ — Enfant</div>
+            <div class="product-desc">Lunchbox blanche et turquoise — dauphins et coraux.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer home={false} />
+  <Cart />
+
+  <script is:inline src="/petites-etoiles/scripts/main.js"></script>
+</Layout>

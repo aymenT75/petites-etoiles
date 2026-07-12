@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Starfield from '../components/Starfield.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Cart from '../components/Cart.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title="Coques de téléphone — Petites Étoiles">
+  <Starfield />
+  <Nav home={false} />
+
+  <section id="coques-page" style="padding-top:7rem">
+    <div class="container">
+      <a href={`${base}/`} class="back-link" style="display:inline-flex;align-items:center;gap:0.4rem;color:var(--text-muted);font-size:0.875rem;margin-bottom:1.5rem;">← Retour à l'accueil</a>
+      <div class="section-header">
+        <div class="section-tag">Boutique</div>
+        <h1 class="section-title">Les <em>coques de téléphone</em> Petites Étoiles</h1>
+        <p class="section-desc">Des coques de téléphone illustrées aux couleurs de l'univers Petites Étoiles, plusieurs modèles disponibles.</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Coque de téléphone Mohamed ﷺ -->
+        <div class="product-card reveal">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
+            <img src={`${base}/tel-mohammed.jpg`} alt="Coque de téléphone Mohamed ﷺ" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>📱</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Coque de téléphone Mohamed ﷺ</div>
+            <div class="product-desc">Chameau du désert sous la nuit étoilée.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Coque de téléphone Adam ﷺ -->
+        <div class="product-card reveal reveal-delay-1">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#c8ead9,#e4f5ec)"></div>
+            <img src={`${base}/tel-adam.jpg`} alt="Coque de téléphone Adam ﷺ" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>📱</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Coque de téléphone Adam ﷺ</div>
+            <div class="product-desc">Jardin d'Éden et calligraphie « Jannah ».</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Coque de téléphone Souleymane ﷺ -->
+        <div class="product-card reveal reveal-delay-2">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#e8f0f8,#d0e4f5)"></div>
+            <img src={`${base}/tel-souleymane.jpg`} alt="Coque de téléphone Souleymane ﷺ" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>📱</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Coque de téléphone Souleymane ﷺ</div>
+            <div class="product-desc">Licorne ailée et abeille dans les nuages.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Coque de téléphone Nouh ﷺ -->
+        <div class="product-card reveal reveal-delay-3">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#cfe8f5,#e8f4fb)"></div>
+            <img src={`${base}/tel-nouh.jpg`} alt="Coque de téléphone Nouh ﷺ" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>📱</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Coque de téléphone Nouh ﷺ</div>
+            <div class="product-desc">L'Arche de Noé et l'arc-en-ciel.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Coque de téléphone Le Corbeau -->
+        <div class="product-card reveal">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#1a1a2e,#2d2d44)"></div>
+            <img src={`${base}/tel-corbeau.jpg`} alt="Coque de téléphone Le Corbeau" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>📱</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Coque de téléphone Le Corbeau</div>
+            <div class="product-desc">Le corbeau dans la forêt enchantée — l'histoire des fils d'Adam.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer home={false} />
+  <Cart />
+
+  <script is:inline src="/petites-etoiles/scripts/main.js"></script>
+</Layout>

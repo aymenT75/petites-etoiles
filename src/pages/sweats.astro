@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Starfield from '../components/Starfield.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Cart from '../components/Cart.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title="Sweats à capuche — Petites Étoiles">
+  <Starfield />
+  <Nav home={false} />
+
+  <section id="sweats-page" style="padding-top:7rem">
+    <div class="container">
+      <a href={`${base}/`} class="back-link" style="display:inline-flex;align-items:center;gap:0.4rem;color:var(--text-muted);font-size:0.875rem;margin-bottom:1.5rem;">← Retour à l'accueil</a>
+      <div class="section-header">
+        <div class="section-tag">Boutique</div>
+        <h1 class="section-title">Les <em>sweats à capuche</em> Petites Étoiles</h1>
+        <p class="section-desc">Des sweats à capuche enfant illustrés à l'effigie des Prophètes. 100% coton bio.</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Sweat à capuche Mohamed ﷺ — Enfant -->
+        <div class="product-card reveal">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
+            <img src={`${base}/sweat-mohammed.jpg`} alt="Sweat à capuche Mohamed ﷺ — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>🧥</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Sweat à capuche Mohamed ﷺ — Enfant</div>
+            <div class="product-desc">Sweat bleu marine — un jeune chameau dans la grotte de la révélation.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Sweat à capuche Adam ﷺ — Enfant -->
+        <div class="product-card reveal reveal-delay-1">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#c8ead9,#e4f5ec)"></div>
+            <img src={`${base}/sweat-adam.jpg`} alt="Sweat à capuche Adam ﷺ — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>🧥</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Sweat à capuche Adam ﷺ — Enfant</div>
+            <div class="product-desc">Sweat vert menthe — le lion, l'agneau et le perroquet du jardin d'Éden.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Sweat à capuche Souleymane ﷺ — Enfant -->
+        <div class="product-card reveal reveal-delay-2">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
+            <img src={`${base}/sweat-souleymane.jpg`} alt="Sweat à capuche Souleymane ﷺ — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>🧥</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Sweat à capuche Souleymane ﷺ — Enfant</div>
+            <div class="product-desc">Sweat bleu marine — le cheval ailé, le lion et les canards.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Sweat à capuche Nouh ﷺ — Enfant -->
+        <div class="product-card reveal reveal-delay-3">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#cfe8f5,#e8f4fb)"></div>
+            <img src={`${base}/sweat-nouh.jpg`} alt="Sweat à capuche Nouh ﷺ — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>🧥</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Sweat à capuche Nouh ﷺ — Enfant</div>
+            <div class="product-desc">Sweat bleu ciel — l'Arche de Noé et les animaux.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+        <!-- Sweat à capuche Le Corbeau -->
+        <div class="product-card reveal">
+          <span class="product-badge new">Nouveau</span>
+          <div class="product-image product-image--photo">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#1a1a2e,#2d2d44)"></div>
+            <img src={`${base}/sweat-corbeau.jpg`} alt="Sweat à capuche Le Corbeau" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="product-image-fallback" style="display:none"><span>🧥</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Sweat à capuche Le Corbeau</div>
+            <div class="product-desc">Sweat noir — le corbeau, l'histoire des fils d'Adam.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer home={false} />
+  <Cart />
+
+  <script is:inline src="/petites-etoiles/scripts/main.js"></script>
+</Layout>
