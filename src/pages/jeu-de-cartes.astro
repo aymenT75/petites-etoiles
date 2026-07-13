@@ -25,20 +25,29 @@ const cartes = Array.from({ length: 28 }, (_, i) => `carte-${String(i + 1).padSt
 
       <ShopMenu active="jeu-de-cartes" />
 
-      <div style="max-width:520px;margin:0 auto 2.5rem;text-align:center;">
-        <div class="product-card reveal" style="overflow:visible">
-          <div class="product-image product-image--photo" style="height:360px">
-            <div class="product-image-bg" style="background:linear-gradient(135deg,#3a2a08,#5c4410)"></div>
-            <img src={`${base}/cartes/carte-27.jpg`} alt="Jeu des 7 familles — Les Prophètes" class="product-photo" style="object-fit:contain" loading="lazy" />
-          </div>
-          <div class="product-body">
-            <div class="product-name">Jeu des 7 familles — Les Prophètes</div>
-            <div class="product-desc">28 cartes illustrées · dès 4 ans · à jouer en famille. Coffret cartonné.</div>
-            <div class="product-footer">
-              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
-            </div>
-          </div>
+      <div class="cartes-hero">
+        <div class="cartes-hero-media">
+          <img src={`${base}/jeu-de-cartes-pack.jpg`} alt="Coffret — Jeu des 7 familles des Prophètes" loading="lazy" />
         </div>
+        <div class="cartes-hero-info">
+          <div class="product-name" style="font-size:1.35rem">Jeu des 7 familles — Les Prophètes</div>
+          <p style="color:var(--text-muted);line-height:1.6;margin:0.75rem 0 1.25rem">
+            Un jeu de cartes éducatif et familial pour découvrir les histoires des Prophètes (que la paix soit sur eux),
+            avec le nom de chaque personnage en français et en arabe.
+          </p>
+          <ul class="cartes-specs">
+            <li>🃏 28 cartes illustrées</li>
+            <li>👨‍👩‍👧‍👦 7 familles — 7 destins</li>
+            <li>🎂 Dès 7 ans</li>
+            <li>👥 2 à 6 joueurs</li>
+            <li>📦 Coffret cartonné</li>
+          </ul>
+          <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600;margin-top:1.25rem">Prix à venir</div>
+        </div>
+      </div>
+
+      <div class="cartes-spread">
+        <img src={`${base}/jeu-de-cartes-spread.jpg`} alt="Aperçu des cartes — Jeu des 7 familles des Prophètes" loading="lazy" />
       </div>
 
       <h2 class="section-title" style="font-size:1.5rem;text-align:center;margin-bottom:1.5rem;">Les 28 cartes</h2>
@@ -59,6 +68,14 @@ const cartes = Array.from({ length: 28 }, (_, i) => `carte-${String(i + 1).padSt
 </Layout>
 
 <style>
+  .cartes-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; max-width: 900px; margin: 0 auto 3rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+  .cartes-hero-media { border-radius: 14px; overflow: hidden; }
+  .cartes-hero-media img { width: 100%; height: auto; display: block; }
+  .cartes-hero-info { min-width: 0; }
+  .cartes-specs { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: var(--text); }
+  @media (max-width: 640px) { .cartes-hero { grid-template-columns: 1fr; } }
+  .cartes-spread { max-width: 620px; margin: 0 auto 2.5rem; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+  .cartes-spread img { width: 100%; height: auto; display: block; }
   .cartes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
   .carte-thumb { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); transition: transform 0.3s ease, box-shadow 0.3s ease; }
   .carte-thumb:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
