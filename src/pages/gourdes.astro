@@ -4,6 +4,7 @@ import Starfield from '../components/Starfield.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Cart from '../components/Cart.astro';
+import ShopMenu from '../components/ShopMenu.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -20,6 +21,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h1 class="section-title">Les <em>gourdes</em> Petites Étoiles</h1>
         <p class="section-desc">Des gourdes en inox pour enfant, illustrées avec les histoires des Prophètes. 100% inox alimentaire.</p>
       </div>
+
+      <ShopMenu active="gourdes" />
 
       <div class="products-grid">
         <!-- Gourde Mohamed ﷺ — Enfant -->

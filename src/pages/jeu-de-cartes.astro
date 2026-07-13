@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Starfield from '../components/Starfield.astro';
+import Nav from '../components/Nav.astro';
+import ShopMenu from '../components/ShopMenu.astro';
+import Footer from '../components/Footer.astro';
+import Cart from '../components/Cart.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const cartes = Array.from({ length: 28 }, (_, i) => `carte-${String(i + 1).padStart(2, '0')}.jpg`);
+---
+
+<Layout title="Jeu des 7 familles — Petites Étoiles">
+  <Starfield />
+  <Nav home={false} />
+
+  <section id="cartes-page" style="padding-top:7rem">
+    <div class="container">
+      <a href={`${base}/`} class="back-link" style="display:inline-flex;align-items:center;gap:0.4rem;color:var(--text-muted);font-size:0.875rem;margin-bottom:1.5rem;">← Retour à l'accueil</a>
+      <div class="section-header">
+        <div class="section-tag">Boutique</div>
+        <h1 class="section-title">Le <em>jeu des 7 familles</em> — Les Prophètes</h1>
+        <p class="section-desc">Un jeu de cartes éducatif et ludique pour découvrir en famille les Prophètes et grands personnages du Coran. 28 cartes magnifiquement illustrées, avec le nom en français et en arabe.</p>
+      </div>
+
+      <ShopMenu active="jeu-de-cartes" />
+
+      <div style="max-width:520px;margin:0 auto 2.5rem;text-align:center;">
+        <div class="product-card reveal" style="overflow:visible">
+          <div class="product-image product-image--photo" style="height:360px">
+            <div class="product-image-bg" style="background:linear-gradient(135deg,#3a2a08,#5c4410)"></div>
+            <img src={`${base}/cartes/carte-27.jpg`} alt="Jeu des 7 familles — Les Prophètes" class="product-photo" style="object-fit:contain" loading="lazy" />
+          </div>
+          <div class="product-body">
+            <div class="product-name">Jeu des 7 familles — Les Prophètes</div>
+            <div class="product-desc">28 cartes illustrées · dès 4 ans · à jouer en famille. Coffret cartonné.</div>
+            <div class="product-footer">
+              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title" style="font-size:1.5rem;text-align:center;margin-bottom:1.5rem;">Les 28 cartes</h2>
+      <div class="cartes-grid">
+        {cartes.map((c, i) => (
+          <div class="carte-thumb reveal">
+            <img src={`${base}/cartes/${c}`} alt={`Carte ${i + 1} — Jeu des 7 familles Petites Étoiles`} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer home={false} />
+  <Cart />
+
+  <script is:inline src="/petites-etoiles/scripts/main.js"></script>
+</Layout>
+
+<style>
+  .cartes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
+  .carte-thumb { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .carte-thumb:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+  .carte-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 2 / 3; }
+</style>

@@ -1,0 +1,25 @@
+---
+// Menu de navigation des catégories de la boutique.
+// `active` = slug de la catégorie courante (pour la surligner), optionnel.
+interface Props { active?: string }
+const { active = '' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const categories = [
+  { slug: 't-shirts',         label: 'T-shirts',   emoji: '👕' },
+  { slug: 'sweats',           label: 'Sweats',     emoji: '🧥' },
+  { slug: 'pyjamas',          label: 'Pyjamas',    emoji: '🛌' },
+  { slug: 'gourdes',          label: 'Gourdes',    emoji: '🥤' },
+  { slug: 'coques-telephone', label: 'Coques',     emoji: '📱' },
+  { slug: 'lunchbox',         label: 'Lunchbox',   emoji: '🍱' },
+  { slug: 'coffrets',         label: 'Coffrets',   emoji: '🎁' },
+  { slug: 'jeu-de-cartes',    label: 'Jeu de cartes', emoji: '🃏' },
+];
+---
+<nav class="shop-menu" aria-label="Catégories de la boutique">
+  {categories.map((c) => (
+    <a href={`${base}/${c.slug}`} class={`shop-menu-item${active === c.slug ? ' active' : ''}`}>
+      <span class="shop-menu-emoji">{c.emoji}</span>{c.label}
+    </a>
+  ))}
+</nav>

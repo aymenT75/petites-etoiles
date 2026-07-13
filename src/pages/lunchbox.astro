@@ -4,6 +4,7 @@ import Starfield from '../components/Starfield.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Cart from '../components/Cart.astro';
+import ShopMenu from '../components/ShopMenu.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -20,6 +21,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h1 class="section-title">Les <em>lunchbox</em> Petites Étoiles</h1>
         <p class="section-desc">Des boîtes à repas illustrées aux couleurs de l'univers Petites Étoiles, idéales pour l'école.</p>
       </div>
+
+      <ShopMenu active="lunchbox" />
 
       <div class="products-grid">
         <!-- Lunchbox Mohamed ﷺ — Enfant -->

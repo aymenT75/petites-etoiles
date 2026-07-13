@@ -4,6 +4,7 @@ import Starfield from '../components/Starfield.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Cart from '../components/Cart.astro';
+import ShopMenu from '../components/ShopMenu.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -20,6 +21,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h1 class="section-title">Les <em>sweats à capuche</em> Petites Étoiles</h1>
         <p class="section-desc">Des sweats à capuche enfant illustrés à l'effigie des Prophètes. 100% coton bio.</p>
       </div>
+
+      <ShopMenu active="sweats" />
 
       <div class="products-grid">
         <!-- Sweat à capuche Mohamed ﷺ — Enfant -->

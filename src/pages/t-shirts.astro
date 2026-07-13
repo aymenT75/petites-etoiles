@@ -4,6 +4,7 @@ import Starfield from '../components/Starfield.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Cart from '../components/Cart.astro';
+import ShopMenu from '../components/ShopMenu.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -20,6 +21,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h1 class="section-title">Les <em>t-shirts</em> Petites Étoiles</h1>
         <p class="section-desc">Des t-shirts enfant 100% coton bio, illustrés avec les histoires des Prophètes. D'autres produits (livres, posters, gourdes...) arrivent bientôt.</p>
       </div>
+
+      <ShopMenu active="t-shirts" />
 
       <div class="products-grid">
         <!-- T-shirt Mohammed -->

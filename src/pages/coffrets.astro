@@ -4,6 +4,7 @@ import Starfield from '../components/Starfield.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Cart from '../components/Cart.astro';
+import ShopMenu from '../components/ShopMenu.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -20,6 +21,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h1 class="section-title">Les <em>coffrets cadeaux</em> Petites Étoiles</h1>
         <p class="section-desc">Des coffrets cadeaux tout-en-un : un t-shirt assorti à des jouets, pour offrir l'univers Petites Étoiles aux petits.</p>
       </div>
+
+      <ShopMenu active="coffrets" />
 
       <div class="products-grid">
         <!-- Coffret cadeau Mohamed ﷺ -->
