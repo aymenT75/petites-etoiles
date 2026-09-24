@@ -10,13 +10,20 @@ const yt = (id: string) => `https://www.youtube.com/watch?v=${id}`;
 const channel = 'https://www.youtube.com/@NajomSaghira';
 
 // `video` = id YouTube de l'histoire du personnage (null si pas encore sortie).
+// Une scène clé par histoire, aquarelle, même famille que la collection classique.
 const characters = [
-  { slug: 'younes',  name: 'Younes',  ar: 'يونس',    hero: 'Léo le dauphin',        bg: '#f6f4ee', video: 'uRQHHo8f_7A', desc: "Léo le dauphin, qui raconte l'histoire de Younes et du grand poisson." },
-  { slug: 'salih',   name: 'Salih',   ar: 'صالح',    hero: 'Alwa la petite chamelle', bg: '#2f5d50', video: '45K4DBB4ljE', desc: "Alwa, la petite chamelle sortie du rocher, qui raconte l'histoire de Salih." },
-  { slug: 'maryam',  name: 'Maryam',  ar: 'مريم',    hero: 'Qitta la petite chatte', bg: '#cfe9da', video: 'wDEyUEgT2X4', desc: "Qitta, la petite chatte qui raconte l'histoire de Maryam et du palmier." },
-  { slug: 'ibrahim', name: 'Ibrahim', ar: 'إبراهيم', hero: 'Salma la colombe',       bg: '#bcdcf0', video: 'nge4gUgOebU', desc: "Salma la colombe, qui raconte l'histoire d'Ibrahim et du feu devenu fraîcheur." },
-  { slug: 'youssef', name: 'Youssef', ar: 'يوسف',    hero: 'Wael le petit loup',     bg: '#1d2b4d', video: null,          desc: "Wael, le petit loup accusé à tort, qui raconte l'histoire de Youssef." },
-  { slug: 'lout',    name: 'Lout',    ar: 'لوط',     hero: 'Hamouda le petit âne',   bg: '#efe2c8', video: null,          desc: "Hamouda et sa lanterne, qui racontent le départ de Lout dans la nuit." },
+  { slug: 'younes',      name: 'Younes',    ar: 'يونس',    hero: 'Léo le dauphin',         video: 'uRQHHo8f_7A', desc: 'Léo nage aux côtés de la grande baleine, sous le croissant de lune.' },
+  { slug: 'salih',       name: 'Salih',     ar: 'صالح',    hero: 'Alwa la petite chamelle', video: '45K4DBB4ljE', desc: "Alwa devant le rocher fendu d'où elle est sortie." },
+  { slug: 'maryam',      name: 'Maryam',    ar: 'مريم',    hero: 'Qitta la petite chatte',  video: 'wDEyUEgT2X4', desc: 'Qitta sous le palmier aux dattes, près de la petite source.' },
+  { slug: 'ibrahim',     name: 'Ibrahim',   ar: 'إبراهيم', hero: 'Salma la colombe',        video: 'nge4gUgOebU', desc: 'Salma vole au-dessus du feu devenu un jardin de fleurs.' },
+  { slug: 'ayoub',       name: 'Ayoub',     ar: 'أيوب',    hero: 'Sabra le petit oiseau',   video: 'L_IWY0sqdTo', desc: 'Sabra chante au-dessus de la source qui jaillit.' },
+  { slug: 'moussa',      name: 'Moussa',    ar: 'موسى',    hero: 'Nilo le petit crocodile', video: 'oSS6knrQhO8', desc: 'Nilo veille sur le petit panier qui flotte sur le Nil.' },
+  { slug: 'kahf',        name: 'Al-Kahf',   ar: 'الكهف',   hero: 'Qitmir le petit chien',   video: 'OvfA6ZMUn9E', desc: 'Qitmir endormi devant la caverne, sous les étoiles.' },
+  { slug: 'adam-salam',  name: 'Adam',      ar: 'آدم',     hero: 'Salam le serpent vert',   video: 'T3opGNWTQdA', desc: "Salam, le petit serpent qui n'y est pour rien, sous l'arbre du jardin." },
+  { slug: 'adam-arnoub', name: 'Adam',      ar: 'آدم',     hero: 'Arnoub le lapin',         video: 'T3opGNWTQdA', desc: 'Arnoub dans le jardin fleuri.' },
+  { slug: 'soulayman',   name: 'Soulayman', ar: 'سليمان',  hero: 'Amira la fourmi',         video: 'rFLnZKPyOJA', desc: "Amira prévient ses amies : l'armée arrive !" },
+  { slug: 'youssef',     name: 'Youssef',   ar: 'يوسف',    hero: 'Wael le petit loup',      video: null,          desc: 'Wael, le petit loup innocent, près du puits.' },
+  { slug: 'lout',        name: 'Lout',      ar: 'لوط',     hero: 'Hamouda le petit âne',    video: null,          desc: 'Hamouda et sa lanterne sur le chemin, la nuit.' },
 ];
 
 const classics = [
@@ -49,7 +56,7 @@ const sizes = ['2 ans', '4 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans']
           <div class={`product-card reveal reveal-delay-${i % 4}`}>
             <span class="product-badge new">Nouveau</span>
             <div class="product-image product-image--photo">
-              <div class="product-image-bg" style={`background:${c.bg}`}></div>
+              <div class="product-image-bg" style="background:#ecebe9"></div>
               <img src={`${base}/tshirt-${c.slug}.jpg`} alt={`T-shirt ${c.name} — ${c.hero}`} class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
               <div class="product-image-fallback" style="display:none"><span>👕</span></div>
             </div>
@@ -108,6 +115,8 @@ const sizes = ['2 ans', '4 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans']
 </Layout>
 
 <style>
+  /* photos carrées : on montre le t-shirt en entier */
+  .product-image--photo { height: auto; aspect-ratio: 1 / 1; }
   .tee-group-title { font-family: var(--font-title); font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
   .tee-group-title span { font-family: var(--font-main); font-size: 0.72rem; font-weight: 800; color: #fff; background: var(--mer); border-radius: 50px; padding: 0.2rem 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
   .tee-ar { font-family: var(--font-arabic); color: var(--gold); margin-inline-start: 0.3rem; }
