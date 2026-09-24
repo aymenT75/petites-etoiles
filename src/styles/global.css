@@ -36,8 +36,8 @@
   --radius-lg:  26px;
   --shadow-card: 0 10px 30px rgba(86,60,41,0.12);
   --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
-  --font-main:  'Nunito', system-ui, sans-serif;
-  --font-title: 'Fredoka', 'Nunito', sans-serif;
+  --font-main:  'Nunito', 'Amiri', system-ui, sans-serif;   /* Amiri = seulement le glyphe ﷺ */
+  --font-title: 'Fredoka', 'Amiri', 'Nunito', sans-serif;
   --font-arabic:'Baloo Bhaijaan 2', 'Cairo', sans-serif;
   --font-serif: var(--font-title);
 }
@@ -168,6 +168,7 @@ section { position: relative; z-index: 1; padding: 5rem 1.5rem; }
 .ribbon-item { flex-shrink: 0; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; padding: 0.65rem 1.5rem; font-size: 0.98rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem; white-space: nowrap; color: #fff; }
 .ribbon-item .prophet { color: var(--or); }
 .honor { font-family: 'Amiri', serif; font-weight: 400; font-size: 1.25em; line-height: 1; }
+.honor-as { font-family: var(--font-arabic); font-size: 0.8em; font-weight: 600; opacity: 0.85; }
 .ribbon-item .ar { font-family: var(--font-arabic); font-size: 1.05rem; }
 .ribbon-item .badge { font-size: 0.68rem; background: var(--turquoise); color: var(--nuit-2); border-radius: 999px; padding: 2px 8px; text-transform: uppercase; font-weight: 800; }
 

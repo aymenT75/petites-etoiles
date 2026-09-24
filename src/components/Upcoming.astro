@@ -1,10 +1,11 @@
 ---
 // Bande « nuit » : histoires pas encore sorties (celles en ligne sont dans Stories.astro) + abonnement.
+// ﷺ est réservé au Prophète Mohammed ; « عليه السلام » pour les autres Prophètes.
 const prophets = [
-  { emoji: '🌙', name: 'Lout',      ar: 'لوط' },
-  { emoji: '🐺', name: 'Youssouf',  ar: 'يوسف' },
-  { emoji: '❄️', name: 'Issa',      ar: 'عيسى' },
-  { emoji: '✨', name: 'Mohammed',  ar: 'محمد' },
+  { emoji: '🌙', name: 'Lout',      ar: 'لوط',  honor: 'as' },
+  { emoji: '🐺', name: 'Youssouf',  ar: 'يوسف', honor: 'as' },
+  { emoji: '❄️', name: 'Issa',      ar: 'عيسى', honor: 'as' },
+  { emoji: '✨', name: 'Mohammed',  ar: 'محمد', honor: 'saw' },
 ];
 ---
 <section id="prochains">
@@ -20,7 +21,7 @@ const prophets = [
     <div class="ribbon-track" id="ribbon">
       {[...prophets, ...prophets].map((p, i) => (
         <div class="ribbon-item" aria-hidden={i >= prophets.length ? 'true' : undefined}>
-          {p.emoji} <span class="prophet">{p.name} <span class="honor">ﷺ</span></span> <span class="ar">{p.ar}</span> <span class="badge" data-i18n="upcoming.badge">Bientôt</span>
+          {p.emoji} <span class="prophet">{p.name} {p.honor === 'saw' ? <span class="honor">ﷺ</span> : <span class="honor-as">عليه السلام</span>}</span> <span class="ar">{p.ar}</span> <span class="badge" data-i18n="upcoming.badge">Bientôt</span>
         </div>
       ))}
     </div>
