@@ -37,7 +37,10 @@ ul { list-style: none; }
 .site-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6) saturate(1.25); animation: kenburns 26s ease-in-out infinite alternate; }
 @keyframes kenburns { from { transform: scale(1.03); } to { transform: scale(1.12); } }
 .site-veil { position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--bg-deep); opacity: 0.3; transition: opacity 0.2s linear; }
-@media (prefers-reduced-motion: reduce) { .site-bg-video { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .site-bg-video { animation: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
 
 #starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 70px; background: rgba(6,0,18,0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: background var(--transition); }
@@ -75,8 +78,8 @@ nav.scrolled { background: rgba(6,0,18,0.95); }
 @keyframes pulse-glow { 0%,100% { transform: translate(-50%,-60%) scale(1); opacity: 0.8; } 50% { transform: translate(-50%,-60%) scale(1.1); opacity: 1; } }
 .hero-inner { position: relative; z-index: 2; max-width: 720px; }
 .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(212,168,67,0.12); border: 1px solid rgba(212,168,67,0.35); border-radius: 50px; padding: 0.35rem 1rem; font-size: 0.8rem; font-weight: 600; color: var(--gold); margin-bottom: 1.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
-.hero-badge .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: blink 1.5s ease-in-out infinite; }
-@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
+.hero-badge .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: blink 3s ease-in-out infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
 .hero-logo { width: 200px; margin: 0 auto 2rem; position: relative; filter: drop-shadow(0 0 40px rgba(212,168,67,0.45)) drop-shadow(0 0 80px rgba(124,58,237,0.25)); animation: logo-float 5s ease-in-out infinite; }
 @keyframes logo-float { 0%,100% { transform: translateY(0) rotate(-0.5deg); } 50% { transform: translateY(-10px) rotate(0.5deg); } }
 .hero-logo img { width: 100%; border-radius: 18px; display: block; }
