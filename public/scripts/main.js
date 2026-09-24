@@ -5,8 +5,12 @@ const navbar = document.getElementById('navbar');
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
+const floatCta = document.getElementById('float-cta');
+const heroEl = document.getElementById('hero');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 30);
+  // Bouton « S'abonner » flottant : visible une fois le haut de page dépassé.
+  if (floatCta && heroEl) floatCta.classList.toggle('show', window.scrollY > heroEl.offsetHeight - 200);
   let current = '';
   sections.forEach(s => {
     if (window.scrollY >= s.offsetTop - 120) current = s.id;
@@ -130,18 +134,20 @@ function showToast(msg) {
 // =====================================================
 // CONTACT FORM
 // =====================================================
-function submitForm() {
-  const name    = document.getElementById('f-name').value.trim();
-  const email   = document.getElementById('f-email').value.trim();
-  const message = document.getElementById('f-message').value.trim();
+// Le formulaire (Contact.astro) utilise les champs name / email / subject / message.
+function submitForm(event) {
+  if (event) event.preventDefault();
+  const name    = document.getElementById('name').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
   if (!name || !email || !message) { showToast('⚠️ Veuillez remplir tous les champs obligatoires.'); return; }
-  const subject  = document.getElementById('f-subject').value || 'Contact site';
-  const lastname = document.getElementById('f-lastname').value.trim();
-  const mailSubject = encodeURIComponent(`[${subject}] Message de ${name} ${lastname}`);
-  const mailBody    = encodeURIComponent(`Nom : ${name} ${lastname}\nEmail : ${email}\nSujet : ${subject}\n\n${message}`);
+  const select  = document.getElementById('subject');
+  const subject = select.options[select.selectedIndex].text || 'Contact site';
+  const mailSubject = encodeURIComponent(`[${subject}] Message de ${name}`);
+  const mailBody    = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\nSujet : ${subject}\n\n${message}`);
   window.location.href = `mailto:petitesetoiles.officiel@gmail.com?subject=${mailSubject}&body=${mailBody}`;
-  document.getElementById('contact-form-content').style.display = 'none';
-  document.getElementById('form-success').classList.add('visible');
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('contact-success').style.display = 'block';
 }
 window.submitForm = submitForm;
 
@@ -151,14 +157,16 @@ window.submitForm = submitForm;
 const i18n = {
   fr: {
     'nav.music':'Histoires','nav.shop':'Boutique','nav.about':'À propos','nav.contact':'Contact','nav.cart':'Panier',
-    'hero.badge':'Musique pour enfants',
-    'hero.sub':"Des comptines sur les Prophètes de l'Islam, chantées dans les langues du monde entier — pour que chaque enfant grandisse avec leur histoire dans le cœur.",
-    'hero.cta1':'▶️ Voir les histoires','hero.cta2':'🛍️ Voir la boutique',
-    'hero.stat1':'Histoires en vidéo','hero.stat2':'Langues','hero.stat3':'Pays','hero.stat4':'Cœurs touchés',
-    'hero.scroll':'Découvrir',
-    'music.tag':'Nos histoires','music.title':'Les histoires des <em>Prophètes</em> en chansons','stories.subscribe':"▶ S'abonner à la chaîne YouTube",
+    'nav.subscribe':"▶ S'abonner",
+    'hero.title':'Les histoires des Prophètes, <em>racontées par les animaux.</em>',
+    'hero.sub':"Une chanson, un petit animal qui l'a vécue, et une belle histoire du Coran. Une nouvelle chaque semaine, pour les 4 à 7 ans.",
+    'hero.cta1':'▶ Regarder les histoires','hero.cta2':'La boutique',
+    'hero.trust1':'Fidèle au Coran','hero.trust2':'Français &amp; arabe','hero.trust3':'Sans publicité',
+    'hero.card':'Younes et le grand poisson',
+    'chars.title':"Qui raconte l'histoire ?",'chars.desc':'Choisis ton petit animal préféré','chars.soon':'Bientôt',
+    'music.tag':'Nos histoires','music.title':'Les histoires des <em>Prophètes</em> en chansons','stories.subscribe':"▶ S'abonner à la chaîne",
     'music.desc':"Chaque histoire est racontée par un petit animal qui l'a vécue. Une nouvelle histoire chaque semaine sur notre chaîne YouTube.",
-    'upcoming.tag':'Prochainement','upcoming.title':'La saga des Prophètes continue…',
+    'upcoming.title':'Une nouvelle histoire chaque semaine ✨','upcoming.desc':'Bientôt sur la chaîne : la saga des Prophètes continue…','upcoming.badge':'Bientôt',
     'shop.tag':'Boutique','shop.title':"L'univers <em>Petites Étoiles</em>",
     'shop.desc':"Musique, livres illustrés et goodies pour accompagner vos enfants dans la découverte des Prophètes.",
     'shop.new':'Nouveau','shop.soon':'Pré-commande','shop.sale':'-25%','shop.add':'+ Panier','shop.preorder':'Pré-commander',
@@ -187,14 +195,16 @@ const i18n = {
   },
   en: {
     'nav.music':'Stories','nav.shop':'Shop','nav.about':'About','nav.contact':'Contact','nav.cart':'Cart',
-    'hero.badge':'Music for children',
-    'hero.sub':"Nursery rhymes about the Prophets of Islam, sung in the languages of the world — so every child grows up with their stories in their heart.",
-    'hero.cta1':'▶️ Watch the stories','hero.cta2':'🛍️ Visit Shop',
-    'hero.stat1':'Video stories','hero.stat2':'Languages','hero.stat3':'Countries','hero.stat4':'Hearts touched',
-    'hero.scroll':'Discover',
-    'music.tag':'Our stories','music.title':'The stories of the <em>Prophets</em> in songs','stories.subscribe':'▶ Subscribe to our YouTube channel',
+    'nav.subscribe':'▶ Subscribe',
+    'hero.title':'The stories of the Prophets, <em>told by the animals.</em>',
+    'hero.sub':'A song, a little animal who lived it, and a beautiful story from the Quran. A new one every week, for ages 4 to 7.',
+    'hero.cta1':'▶ Watch the stories','hero.cta2':'The shop',
+    'hero.trust1':'True to the Quran','hero.trust2':'French &amp; Arabic','hero.trust3':'No ads',
+    'hero.card':'Younes and the big fish',
+    'chars.title':'Who tells the story?','chars.desc':'Pick your favourite little animal','chars.soon':'Soon',
+    'music.tag':'Our stories','music.title':'The stories of the <em>Prophets</em> in songs','stories.subscribe':'▶ Subscribe to the channel',
     'music.desc':"Each story is told by a little animal who lived it. A new story every week on our YouTube channel.",
-    'upcoming.tag':'Coming soon','upcoming.title':'The Prophets saga continues…',
+    'upcoming.title':'A new story every week ✨','upcoming.desc':'Coming soon on the channel: the Prophets saga continues…','upcoming.badge':'Soon',
     'shop.tag':'Shop','shop.title':"The <em>Petites Étoiles</em> universe",
     'shop.desc':"Music, illustrated books, and goodies to guide your children in discovering the Prophets.",
     'shop.new':'New','shop.soon':'Pre-order','shop.sale':'-25%','shop.add':'+ Add to cart','shop.preorder':'Pre-order',
@@ -223,14 +233,16 @@ const i18n = {
   },
   ar: {
     'nav.music':'القصص','nav.shop':'المتجر','nav.about':'عنّا','nav.contact':'تواصل','nav.cart':'السلة',
-    'hero.badge':'موسيقى للأطفال',
-    'hero.sub':'أناشيد عن أنبياء الإسلام، تُغنّى بلغات العالم — لينشأ كل طفل وقصصهم في قلبه.',
-    'hero.cta1':'▶️ شاهد القصص','hero.cta2':'🛍️ زر المتجر',
-    'hero.stat1':'قصص مصوّرة','hero.stat2':'لغات','hero.stat3':'دولة','hero.stat4':'قلوب مست',
-    'hero.scroll':'اكتشف',
-    'music.tag':'قصصنا','music.title':'قصص <em>الأنبياء</em> بالأناشيد','stories.subscribe':'▶ اشترك في قناتنا على يوتيوب',
+    'nav.subscribe':'▶ اشترك',
+    'hero.title':'قصص الأنبياء، <em>ترويها الحيوانات.</em>',
+    'hero.sub':'أنشودة، وحيوان صغير عاش القصة، وحكاية جميلة من القرآن. قصة جديدة كل أسبوع، للأطفال من 4 إلى 7 سنوات.',
+    'hero.cta1':'▶ شاهد القصص','hero.cta2':'المتجر',
+    'hero.trust1':'وفيّة للقرآن','hero.trust2':'بالفرنسية والعربية','hero.trust3':'بدون إعلانات',
+    'hero.card':'يونس والحوت',
+    'chars.title':'من يروي القصة؟','chars.desc':'اختر حيوانك الصغير المفضّل','chars.soon':'قريبًا',
+    'music.tag':'قصصنا','music.title':'قصص <em>الأنبياء</em> بالأناشيد','stories.subscribe':'▶ اشترك في القناة',
     'music.desc':'كل قصة يرويها حيوان صغير عاشها. قصة جديدة كل أسبوع على قناتنا في يوتيوب.',
-    'upcoming.tag':'قريبًا','upcoming.title':'ملحمة الأنبياء تتواصل…',
+    'upcoming.title':'قصة جديدة كل أسبوع ✨','upcoming.desc':'قريبًا على القناة: ملحمة الأنبياء تتواصل…','upcoming.badge':'قريبًا',
     'shop.tag':'المتجر','shop.title':'عالم <em>نجوم صغيرة</em>',
     'shop.desc':'موسيقى وكتب مصوّرة وهدايا لمرافقة أطفالك في اكتشاف قصص الأنبياء.',
     'shop.new':'جديد','shop.soon':'طلب مسبق','shop.sale':'25%-','shop.add':'+ أضف للسلة','shop.preorder':'اطلب مسبقًا',

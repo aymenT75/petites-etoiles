@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Starfield from '../components/Starfield.astro';
 import Nav from '../components/Nav.astro';
 import ShopMenu from '../components/ShopMenu.astro';
 import Footer from '../components/Footer.astro';
@@ -11,7 +10,6 @@ const cartes = Array.from({ length: 28 }, (_, i) => `carte-${String(i + 1).padSt
 ---
 
 <Layout title="Jeu des 7 familles — Petites Étoiles">
-  <Starfield />
   <Nav home={false} />
 
   <section id="cartes-page" style="padding-top:7rem">
@@ -78,6 +76,6 @@ const cartes = Array.from({ length: 28 }, (_, i) => `carte-${String(i + 1).padSt
   .cartes-spread img { width: 100%; height: auto; display: block; }
   .cartes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
   .carte-thumb { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .carte-thumb:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+  .carte-thumb:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 30px rgba(86,60,41,0.2); }
   .carte-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 2 / 3; }
 </style>

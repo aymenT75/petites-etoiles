@@ -1,0 +1,40 @@
+---
+// Les petits animaux qui racontent les histoires. `video` = null tant que l'épisode n'est pas sorti.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const channel = 'https://www.youtube.com/@NajomSaghira';
+const characters = [
+  { slug: 'leo',     name: 'Léo',     prophet: 'Younes',  bg: '#cdebf2', video: 'uRQHHo8f_7A' },
+  { slug: 'alwa',    name: 'Alwa',    prophet: 'Salih',   bg: '#f2cc91', video: '45K4DBB4ljE' },
+  { slug: 'qitta',   name: 'Qitta',   prophet: 'Maryam',  bg: '#f3d9c4', video: 'wDEyUEgT2X4' },
+  { slug: 'salma',   name: 'Salma',   prophet: 'Ibrahim', bg: '#dbe7f3', video: 'nge4gUgOebU' },
+  { slug: 'sabra',   name: 'Sabra',   prophet: 'Ayoub',   bg: '#f8dcd6', video: 'L_IWY0sqdTo' },
+  { slug: 'nilo',    name: 'Nilo',    prophet: 'Moussa',  bg: '#d6ead0', video: 'oSS6knrQhO8' },
+  { slug: 'qitmir',  name: 'Qitmir',  prophet: 'Al-Kahf', bg: '#f0dcc4', video: 'OvfA6ZMUn9E' },
+  { slug: 'salam',   name: 'Salam',   prophet: 'Adam',    bg: '#d4efd0', video: 'T3opGNWTQdA' },
+  { slug: 'arnoub',  name: 'Arnoub',  prophet: 'Adam',    bg: '#eee4d6', video: 'T3opGNWTQdA' },
+  { slug: 'amira',   name: 'Amira',   prophet: 'Soulayman', bg: '#f6d6cc', video: 'rFLnZKPyOJA' },
+  { slug: 'wael',    name: 'Wael',    prophet: 'Youssef', bg: '#c9d3e3', video: null },
+  { slug: 'hamouda', name: 'Hamouda', prophet: 'Lout',    bg: '#efe0c6', video: null },
+];
+---
+<section id="personnages">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title" data-i18n="chars.title">Qui raconte l'histoire ?</h2>
+      <p class="section-desc" data-i18n="chars.desc">Choisis ton petit animal préféré</p>
+    </div>
+    <div class="chars">
+      {characters.map((c) => (
+        <a class="char" href={c.video ? `https://www.youtube.com/watch?v=${c.video}` : channel} target="_blank" rel="noopener"
+           aria-label={`${c.name}, qui raconte l'histoire de ${c.prophet}${c.video ? '' : ' (bientôt)'}`}>
+          <div class="char-disc" style={`background:${c.bg}`}>
+            <img src={`${base}/personnages/${c.slug}.webp`} alt="" loading="lazy" width="120" height="120" />
+          </div>
+          <b>{c.name}</b>
+          <span>{c.prophet}</span>
+          {!c.video && <span class="char-soon" data-i18n="chars.soon">Bientôt</span>}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

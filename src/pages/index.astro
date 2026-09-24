@@ -1,9 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Starfield from '../components/Starfield.astro';
-import VideoBackground from '../components/VideoBackground.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
+import Characters from '../components/Characters.astro';
 import Stories from '../components/Stories.astro';
 import Upcoming from '../components/Upcoming.astro';
 import Shop from '../components/Shop.astro';
@@ -14,11 +13,9 @@ import Cart from '../components/Cart.astro';
 ---
 
 <Layout>
-  <VideoBackground />
-  <Starfield />
   <Nav />
   <Hero />
-  <div class="divider"></div>
+  <Characters />
   <Stories />
   <Upcoming />
   <Shop />
@@ -26,6 +23,7 @@ import Cart from '../components/Cart.astro';
   <Contact />
   <Footer />
   <Cart />
+  <a class="btn-primary float-cta" id="float-cta" href="https://www.youtube.com/@NajomSaghira?sub_confirmation=1" target="_blank" rel="noopener" data-i18n="nav.subscribe">▶ S'abonner</a>
 
     <script is:inline src="/petites-etoiles/scripts/main.js"></script>
 </Layout>

@@ -1,25 +1,29 @@
 ---
-// Histoires pas encore sorties sur la chaîne (celles déjà en ligne sont dans Stories.astro).
+// Bande « nuit » : histoires pas encore sorties (celles en ligne sont dans Stories.astro) + abonnement.
 const prophets = [
-  { emoji: '🌙', name: 'Lout ﷺ',      ar: 'لوط' },
-  { emoji: '🐺', name: 'Youssouf ﷺ',  ar: 'يوسف' },
-  { emoji: '❄️', name: 'Issa ﷺ',      ar: 'عيسى' },
-  { emoji: '✨', name: 'Mohammed ﷺ',  ar: 'محمد' },
+  { emoji: '🌙', name: 'Lout',      ar: 'لوط' },
+  { emoji: '🐺', name: 'Youssouf',  ar: 'يوسف' },
+  { emoji: '❄️', name: 'Issa',      ar: 'عيسى' },
+  { emoji: '✨', name: 'Mohammed',  ar: 'محمد' },
 ];
 ---
-<div class="divider"></div>
-<section id="prochains" style="padding:3rem 0;">
-  <div style="text-align:center;margin-bottom:1.5rem;">
-    <div class="section-tag" data-i18n="upcoming.tag">Prochainement</div>
-    <h3 style="font-size:1.1rem;color:var(--text-muted)" data-i18n="upcoming.title">La saga des Prophètes continue…</h3>
+<section id="prochains">
+  <span class="deco-star" style="left:9%;top:18%" aria-hidden="true">✦</span>
+  <span class="deco-star" style="left:22%;bottom:14%;font-size:14px" aria-hidden="true">✦</span>
+  <span class="deco-star" style="right:11%;top:26%" aria-hidden="true">✦</span>
+  <span class="deco-star" style="right:25%;bottom:18%;font-size:14px" aria-hidden="true">✦</span>
+  <div class="container" style="padding:0 1.5rem">
+    <h2 class="section-title" data-i18n="upcoming.title">Une nouvelle histoire chaque semaine ✨</h2>
+    <p class="section-desc" data-i18n="upcoming.desc">Bientôt sur la chaîne : la saga des Prophètes continue…</p>
   </div>
-  <div style="overflow:hidden;mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent)">
+  <div class="ribbon-wrap">
     <div class="ribbon-track" id="ribbon">
-      {[...prophets, ...prophets].map((p) => (
-        <div class="ribbon-item">
-          {p.emoji} <span class="prophet">{p.name}</span> <span class="ar">{p.ar}</span> <span class="badge">Bientôt</span>
+      {[...prophets, ...prophets].map((p, i) => (
+        <div class="ribbon-item" aria-hidden={i >= prophets.length ? 'true' : undefined}>
+          {p.emoji} <span class="prophet">{p.name} <span class="honor">ﷺ</span></span> <span class="ar">{p.ar}</span> <span class="badge" data-i18n="upcoming.badge">Bientôt</span>
         </div>
       ))}
     </div>
   </div>
+  <a href="https://www.youtube.com/@NajomSaghira?sub_confirmation=1" target="_blank" rel="noopener" class="btn-primary" data-i18n="stories.subscribe">▶ S'abonner à la chaîne</a>
 </section>

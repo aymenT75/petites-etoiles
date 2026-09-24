@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Starfield from '../components/Starfield.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Cart from '../components/Cart.astro';
@@ -10,7 +9,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Coffrets cadeaux — Petites Étoiles">
-  <Starfield />
   <Nav home={false} />
 
   <section id="coffrets-page" style="padding-top:7rem">

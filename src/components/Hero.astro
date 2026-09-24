@@ -1,48 +1,37 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+// Histoire mise en avant dans la carte vidéo du haut de page.
+const featured = { id: 'uRQHHo8f_7A', mascot: 'leo', mascotAlt: 'Léo le dauphin' };
 ---
 <section id="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <span class="dot"></span>
-      <span data-i18n="hero.badge">Musique pour enfants</span>
-    </div>
-    <div class="hero-logo">
-      <img src={`${base}/logo-hero.png`} alt="Petites Étoiles" width="200" height="200" />
-    </div>
-    <h1 class="hero-title">
-      Petites <span class="gold">Étoiles</span>
-      <span class="arabic">نجوم صغيرة</span>
-    </h1>
-    <p class="hero-sub" data-i18n="hero.sub">
-      Des comptines sur les Prophètes de l'Islam, chantées dans les langues du monde entier — pour que chaque enfant grandisse avec leur histoire dans le cœur.
-    </p>
-    <div class="hero-ctas">
-      <a href="#musique" class="btn-primary" data-i18n="hero.cta1">▶️ Voir les histoires</a>
-      <a href="#boutique" class="btn-secondary" data-i18n="hero.cta2">🛍️ Voir la boutique</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="num">10</div>
-        <div class="label" data-i18n="hero.stat1">Histoires en vidéo</div>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <h1 class="hero-title" data-i18n="hero.title">Les histoires des Prophètes, <em>racontées par les animaux.</em></h1>
+      <p class="hero-sub" data-i18n="hero.sub">Une chanson, un petit animal qui l'a vécue, et une belle histoire du Coran. Une nouvelle chaque semaine, pour les 4 à 7 ans.</p>
+      <div class="hero-ctas">
+        <a href="#musique" class="btn-primary" data-i18n="hero.cta1">▶ Regarder les histoires</a>
+        <a href="#boutique" class="btn-secondary" data-i18n="hero.cta2">La boutique</a>
       </div>
-      <div class="hero-stat">
-        <div class="num">6</div>
-        <div class="label" data-i18n="hero.stat2">Langues</div>
-      </div>
-      <div class="hero-stat">
-        <div class="num">25+</div>
-        <div class="label" data-i18n="hero.stat3">Pays</div>
-      </div>
-      <div class="hero-stat">
-        <div class="num">∞</div>
-        <div class="label" data-i18n="hero.stat4">Cœurs touchés</div>
-      </div>
+      <ul class="hero-trust">
+        <li data-i18n="hero.trust1">Fidèle au Coran</li>
+        <li data-i18n="hero.trust2">Français &amp; arabe</li>
+        <li data-i18n="hero.trust3">Sans publicité</li>
+      </ul>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span data-i18n="hero.scroll">Découvrir</span>
+
+    <div class="hero-stage">
+      <span class="hero-moon" aria-hidden="true">🌙</span>
+      <span class="deco-star" style="left:8%;top:6%" aria-hidden="true">✦</span>
+      <span class="deco-star" style="right:4%;top:0" aria-hidden="true">✦</span>
+      <span class="deco-star" style="left:30%;bottom:4%;font-size:16px" aria-hidden="true">✦</span>
+      <a class="hero-card" href={`https://www.youtube.com/watch?v=${featured.id}`} target="_blank" rel="noopener">
+        <div class="hero-card-thumb">
+          <img src={`https://img.youtube.com/vi/${featured.id}/hqdefault.jpg`} alt="" width="480" height="360" />
+          <span class="hero-card-play" aria-hidden="true">▶</span>
+        </div>
+        <div class="hero-card-cap"><i aria-hidden="true">▶</i><span data-i18n="hero.card">Younes et le grand poisson</span></div>
+      </a>
+      <img class="hero-mascot" src={`${base}/personnages/${featured.mascot}.webp`} alt={featured.mascotAlt} width="170" height="154" />
+    </div>
   </div>
 </section>
