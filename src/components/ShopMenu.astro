@@ -16,10 +16,10 @@ const categories = [
   { slug: 'jeu-de-cartes',    label: 'Jeu de cartes', emoji: '🃏' },
 ];
 ---
-<nav class="shop-menu" aria-label="Catégories de la boutique">
+<div class="shop-menu" role="navigation" aria-label="Catégories de la boutique">
   {categories.map((c) => (
     <a href={`${base}/${c.slug}`} class={`shop-menu-item${active === c.slug ? ' active' : ''}`}>
       <span class="shop-menu-emoji">{c.emoji}</span>{c.label}
     </a>
   ))}
-</nav>
+</div>

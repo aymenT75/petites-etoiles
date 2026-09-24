@@ -16,7 +16,7 @@ const link = (hash: string) => home ? hash : `${base}/${hash}`;
   </a>
 
   <ul class="nav-links">
-    <li><a href={link('#musique')} data-i18n="nav.music">Musique</a></li>
+    <li><a href={link('#musique')} data-i18n="nav.music">Histoires</a></li>
     <li><a href={link('#boutique')} data-i18n="nav.shop">Boutique</a></li>
     <li><a href={link('#apropos')} data-i18n="nav.about">À propos</a></li>
     <li><a href={link('#contact')} data-i18n="nav.contact">Contact</a></li>
@@ -40,7 +40,7 @@ const link = (hash: string) => home ? hash : `${base}/${hash}`;
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
-  <a href={link('#musique')} onclick="closeMenu()" data-i18n="nav.music">Musique</a>
+  <a href={link('#musique')} onclick="closeMenu()" data-i18n="nav.music">Histoires</a>
   <a href={link('#boutique')} onclick="closeMenu()" data-i18n="nav.shop">Boutique</a>
   <a href={link('#apropos')} onclick="closeMenu()" data-i18n="nav.about">À propos</a>
   <a href={link('#contact')} onclick="closeMenu()" data-i18n="nav.contact">Contact</a>

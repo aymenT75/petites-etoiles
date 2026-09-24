@@ -1,0 +1,82 @@
+---
+// Les histoires des Prophètes publiées sur la chaîne YouTube (@NajomSaghira).
+// Pour ajouter un épisode : ajouter une ligne ici (fr = id de la vidéo française,
+// ar = id de la version arabe ; l'un des deux peut être null).
+const channel = 'https://www.youtube.com/@NajomSaghira';
+
+const stories = [
+  { name: 'Soulayman', ar: 'سليمان', emoji: '🐜', hook: 'Une fourmi a arrêté une armée !',          fr: 'rFLnZKPyOJA', arId: null },
+  { name: 'Moussa',    ar: 'موسى',   emoji: '🐊', hook: 'Racontée par Nilo le petit crocodile',     fr: 'oSS6knrQhO8', arId: '3JIiVSrPNDE' },
+  { name: 'Adam',      ar: 'آدم',    emoji: '🐍', hook: "Ce n'est pas le serpent ! Adam et Hawa",    fr: null,          arId: 'T3opGNWTQdA' },
+  { name: 'Ayoub',     ar: 'أيوب',   emoji: '🐦', hook: '« Tiens bon », chantait Sabra le petit oiseau',fr: 'L_IWY0sqdTo', arId: null },
+  { name: 'Les Gens de la Caverne', ar: 'أهل الكهف', emoji: '🐶', hook: 'Ils ont dormi 309 ans !', fr: null,          arId: 'OvfA6ZMUn9E' },
+  { name: 'Nouh',      ar: 'نوح',    emoji: '🌊', hook: "Racontée par les animaux de l'arche",      fr: 'srv5M3jML2E', arId: null },
+  { name: 'Ibrahim',   ar: 'إبراهيم', emoji: '🕊️', hook: 'Racontée par Salma la colombe',           fr: 'nge4gUgOebU', arId: null },
+  { name: 'Maryam',    ar: 'مريم',   emoji: '🌴', hook: 'Racontée par Qitta la petite chatte',      fr: 'wDEyUEgT2X4', arId: null },
+  { name: 'Younes',    ar: 'يونس',   emoji: '🐋', hook: 'Racontée par Léo le dauphin',              fr: 'uRQHHo8f_7A', arId: 'GwBxXO3lTGE' },
+  { name: 'Salih',     ar: 'صالح',   emoji: '🐪', hook: 'Racontée par Alwa la petite chamelle',     fr: '45K4DBB4ljE', arId: null },
+];
+
+const watch = (id: string) => `https://www.youtube.com/watch?v=${id}`;
+const thumb = (id: string) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+---
+<section id="musique">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag" data-i18n="music.tag">Nos histoires</div>
+      <h2 class="section-title" data-i18n="music.title">Les histoires des <em>Prophètes</em> en chansons</h2>
+      <p class="section-desc" data-i18n="music.desc">Chaque histoire est racontée par un petit animal qui l'a vécue. Une nouvelle histoire chaque semaine sur notre chaîne YouTube.</p>
+    </div>
+
+    <div class="stories-grid">
+      {stories.map((s, i) => {
+        const main = s.fr ?? s.arId;
+        const mainLang = s.fr ? 'FR' : 'AR';
+        return (
+          <article class={`story-card reveal reveal-delay-${(i % 4)}`}>
+            <a class="story-thumb" href={watch(main)} target="_blank" rel="noopener" aria-label={`Regarder l'histoire de ${s.name} sur YouTube`}>
+              <img src={thumb(main)} alt={`L'histoire de ${s.name} — Petites Étoiles`} loading="lazy" width="480" height="360" />
+              <span class="story-play" aria-hidden="true">▶</span>
+              <span class="story-lang">{mainLang}</span>
+            </a>
+            <div class="story-body">
+              <div class="story-name">{s.name} <span class="story-ar">{s.ar}</span></div>
+              <div class="story-hook">{s.emoji} {s.hook}</div>
+              <div class="story-links">
+                <a class="story-btn" href={watch(main)} target="_blank" rel="noopener">▶ {mainLang === 'FR' ? 'Regarder' : 'Regarder (arabe)'}</a>
+                {s.fr && s.arId && (
+                  <a class="story-btn story-btn--ar" href={watch(s.arId)} target="_blank" rel="noopener">النسخة العربية</a>
+                )}
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <div class="stories-cta">
+      <a href={`${channel}?sub_confirmation=1`} target="_blank" rel="noopener" class="btn-primary" data-i18n="stories.subscribe">▶ S'abonner à la chaîne YouTube</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+  .story-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; transition: transform var(--transition), box-shadow var(--transition); }
+  .story-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(212,168,67,0.15); }
+  .story-thumb { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: #0b0420; }
+  .story-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .story-card:hover .story-thumb img { transform: scale(1.05); }
+  .story-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 54px; height: 54px; border-radius: 50%; background: rgba(212,168,67,0.92); color: var(--bg-deep); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; padding-left: 4px; box-shadow: 0 6px 24px rgba(0,0,0,0.4); transition: transform var(--transition); }
+  .story-card:hover .story-play { transform: translate(-50%, -50%) scale(1.1); }
+  .story-lang { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; font-size: 0.7rem; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; }
+  .story-body { padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
+  .story-name { font-size: 1.12rem; font-weight: 800; color: var(--text); }
+  .story-ar { font-family: var(--font-arabic); color: var(--gold); font-weight: 700; margin-inline-start: 0.35rem; }
+  .story-hook { font-size: 0.86rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
+  .story-links { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.4rem; }
+  .story-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.78rem; font-weight: 700; color: var(--text); transition: all var(--transition); }
+  .story-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .story-btn--ar { font-family: var(--font-arabic); }
+  .stories-cta { text-align: center; margin-top: 2.5rem; }
+</style>

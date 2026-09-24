@@ -7,6 +7,27 @@ import Cart from '../components/Cart.astro';
 import ShopMenu from '../components/ShopMenu.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const yt = (id: string) => `https://www.youtube.com/watch?v=${id}`;
+const channel = 'https://www.youtube.com/@NajomSaghira';
+
+// `video` = id YouTube de l'histoire du personnage (null si pas encore sortie).
+const characters = [
+  { slug: 'younes',  name: 'Younes',  ar: 'يونس',    hero: 'Léo le dauphin',        bg: '#f6f4ee', video: 'uRQHHo8f_7A', desc: "Léo le dauphin, qui raconte l'histoire de Younes et du grand poisson." },
+  { slug: 'salih',   name: 'Salih',   ar: 'صالح',    hero: 'Alwa la petite chamelle', bg: '#2f5d50', video: '45K4DBB4ljE', desc: "Alwa, la petite chamelle sortie du rocher, qui raconte l'histoire de Salih." },
+  { slug: 'maryam',  name: 'Maryam',  ar: 'مريم',    hero: 'Qitta la petite chatte', bg: '#cfe9da', video: 'wDEyUEgT2X4', desc: "Qitta, la petite chatte qui raconte l'histoire de Maryam et du palmier." },
+  { slug: 'ibrahim', name: 'Ibrahim', ar: 'إبراهيم', hero: 'Salma la colombe',       bg: '#bcdcf0', video: 'nge4gUgOebU', desc: "Salma la colombe, qui raconte l'histoire d'Ibrahim et du feu devenu fraîcheur." },
+  { slug: 'youssef', name: 'Youssef', ar: 'يوسف',    hero: 'Wael le petit loup',     bg: '#1d2b4d', video: null,          desc: "Wael, le petit loup accusé à tort, qui raconte l'histoire de Youssef." },
+  { slug: 'lout',    name: 'Lout',    ar: 'لوط',     hero: 'Hamouda le petit âne',   bg: '#efe2c8', video: null,          desc: "Hamouda et sa lanterne, qui racontent le départ de Lout dans la nuit." },
+];
+
+const classics = [
+  { slug: 'souleymane', name: 'Souleymane', ar: 'سليمان', bg: '#0f1c33', video: 'rFLnZKPyOJA', desc: 'Le cheval ailé, la fourmi, la huppe et le palais de Souleymane.' },
+  { slug: 'nouh',       name: 'Nouh',       ar: 'نوح',    bg: '#cfe8f5', video: 'srv5M3jML2E', desc: "L'Arche de Nouh, l'arc-en-ciel et les animaux deux par deux." },
+  { slug: 'adam',       name: 'Adam',       ar: 'آدم',    bg: '#c8ead9', video: 'T3opGNWTQdA', desc: "Le jardin d'Éden, le lion, le chameau et le perroquet." },
+  { slug: 'mohammed',   name: 'Mohamed',    ar: 'محمد',   bg: '#0f1c33', video: null,          desc: "La grotte, un jeune chameau et la toile d'araignée protectrice." },
+];
+
+const sizes = ['2 ans', '4 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans'];
 ---
 
 <Layout title="T-shirts — Petites Étoiles">
@@ -19,115 +40,65 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="section-header">
         <div class="section-tag">Boutique</div>
         <h1 class="section-title">Les <em>t-shirts</em> Petites Étoiles</h1>
-        <p class="section-desc">Des t-shirts enfant 100% coton bio, illustrés avec les histoires des Prophètes. D'autres produits (livres, posters, gourdes...) arrivent bientôt.</p>
+        <p class="section-desc">Des t-shirts enfant 100% coton bio, à l'effigie des petits héros qui racontent les histoires des Prophètes sur notre chaîne.</p>
       </div>
 
       <ShopMenu active="t-shirts" />
 
+      <h2 class="tee-group-title">Les héros des histoires <span>✨ Nouveau</span></h2>
       <div class="products-grid">
-        <!-- T-shirt Mohammed -->
-        <div class="product-card reveal" data-product='{"id":3,"name":"T-shirt Mohamed ﷺ — Enfant","price":24.99,"icon":"👕"}'>
-          <span class="product-badge new">Nouveau</span>
-          <div class="product-image product-image--photo">
-            <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
-            <img src={`${base}/tshirt-mohammed.jpg`} alt="T-shirt Mohamed ﷺ" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <div class="product-image-fallback" style="display:none"><span>👕</span></div>
-          </div>
-          <div class="product-body">
-            <div class="product-name">T-shirt Mohamed ﷺ — Enfant</div>
-            <div class="product-desc">T-shirt bleu marine — la grotte de la révélation, un jeune chameau et sa toile d'araignée protectrice. 100% coton bio.</div>
-            <div class="size-chips">
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">2 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">4 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">6 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">8 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">10 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">12 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">14 ans</button>
+        {characters.map((c, i) => (
+          <div class={`product-card reveal reveal-delay-${i % 4}`}>
+            <span class="product-badge new">Nouveau</span>
+            <div class="product-image product-image--photo">
+              <div class="product-image-bg" style={`background:${c.bg}`}></div>
+              <img src={`${base}/tshirt-${c.slug}.jpg`} alt={`T-shirt ${c.name} — ${c.hero}`} class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+              <div class="product-image-fallback" style="display:none"><span>👕</span></div>
             </div>
-            <div class="product-footer">
-              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            <div class="product-body">
+              <div class="product-name">T-shirt {c.name} <span class="tee-ar">{c.ar}</span></div>
+              <div class="tee-hero">avec {c.hero}</div>
+              <div class="product-desc">{c.desc} 100% coton bio.</div>
+              <div class="size-chips">
+                {sizes.map((s) => (
+                  <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">{s}</button>
+                ))}
+              </div>
+              <div class="product-footer">
+                <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+                {c.video
+                  ? <a class="tee-story" href={yt(c.video)} target="_blank" rel="noopener">▶ Voir l'histoire</a>
+                  : <a class="tee-story tee-story--soon" href={channel} target="_blank" rel="noopener">Histoire bientôt</a>}
+              </div>
             </div>
           </div>
-        </div>
+        ))}
+      </div>
 
-        <!-- T-shirt Souleymane -->
-        <div class="product-card reveal reveal-delay-1" data-product='{"id":7,"name":"T-shirt Souleymane ﷺ — Enfant","price":24.99,"icon":"👕"}'>
-          <span class="product-badge new">Nouveau</span>
-          <div class="product-image product-image--photo">
-            <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
-            <img src={`${base}/tshirt-souleymane.jpg`} alt="T-shirt Souleymane ﷺ" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <div class="product-image-fallback" style="display:none"><span>🦅</span></div>
-          </div>
-          <div class="product-body">
-            <div class="product-name">T-shirt Souleymane ﷺ — Enfant</div>
-            <div class="product-desc">T-shirt bleu marine — le cheval ailé, la fourmi, la huppe et le palais de Souleymane. 100% coton bio.</div>
-            <div class="size-chips">
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">2 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">4 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">6 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">8 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">10 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">12 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">14 ans</button>
+      <h2 class="tee-group-title">La collection classique</h2>
+      <div class="products-grid">
+        {classics.map((c, i) => (
+          <div class={`product-card reveal reveal-delay-${i % 4}`}>
+            <div class="product-image product-image--photo">
+              <div class="product-image-bg" style={`background:${c.bg}`}></div>
+              <img src={`${base}/tshirt-${c.slug}.jpg`} alt={`T-shirt ${c.name}`} class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+              <div class="product-image-fallback" style="display:none"><span>👕</span></div>
             </div>
-            <div class="product-footer">
-              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- T-shirt Adam -->
-        <div class="product-card reveal reveal-delay-2" data-product='{"id":9,"name":"T-shirt Adam ﷺ — Enfant","price":24.99,"icon":"👕"}'>
-          <span class="product-badge new">Nouveau</span>
-          <div class="product-image product-image--photo">
-            <div class="product-image-bg" style="background:linear-gradient(135deg,#c8ead9,#e4f5ec)"></div>
-            <img src={`${base}/tshirt-adam.jpg`} alt="T-shirt Adam ﷺ" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <div class="product-image-fallback" style="display:none"><span>🦁</span></div>
-          </div>
-          <div class="product-body">
-            <div class="product-name">T-shirt Adam ﷺ — Enfant</div>
-            <div class="product-desc">T-shirt vert menthe — le jardin d'Éden, le lion, le chameau et le perroquet. 100% coton bio.</div>
-            <div class="size-chips">
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">2 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">4 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">6 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">8 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">10 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">12 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">14 ans</button>
-            </div>
-            <div class="product-footer">
-              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+            <div class="product-body">
+              <div class="product-name">T-shirt {c.name} <span class="tee-ar">{c.ar}</span></div>
+              <div class="product-desc">{c.desc} 100% coton bio.</div>
+              <div class="size-chips">
+                {sizes.map((s) => (
+                  <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">{s}</button>
+                ))}
+              </div>
+              <div class="product-footer">
+                <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+                {c.video && <a class="tee-story" href={yt(c.video)} target="_blank" rel="noopener">▶ Voir l'histoire</a>}
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- T-shirt Nouh -->
-        <div class="product-card reveal reveal-delay-3" data-product='{"id":8,"name":"T-shirt Nouh ﷺ — Enfant","price":24.99,"icon":"👕"}'>
-          <span class="product-badge new">Nouveau</span>
-          <div class="product-image product-image--photo">
-            <div class="product-image-bg" style="background:linear-gradient(135deg,#cfe8f5,#e8f4fb)"></div>
-            <img src={`${base}/tshirt-nouh.jpg`} alt="T-shirt Nouh ﷺ" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <div class="product-image-fallback" style="display:none"><span>⛵</span></div>
-          </div>
-          <div class="product-body">
-            <div class="product-name">T-shirt Nouh ﷺ — Enfant</div>
-            <div class="product-desc">T-shirt bleu ciel — l'Arche de Noé, l'arc-en-ciel et les animaux deux par deux. 100% coton bio.</div>
-            <div class="size-chips">
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">2 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">4 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">6 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">8 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">10 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">12 ans</button>
-              <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">14 ans</button>
-            </div>
-            <div class="product-footer">
-              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -137,3 +108,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <script is:inline src="/petites-etoiles/scripts/main.js"></script>
 </Layout>
+
+<style>
+  .tee-group-title { font-size: 1.35rem; font-weight: 800; margin: 2.5rem 0 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .tee-group-title span { font-size: 0.72rem; font-weight: 700; color: var(--bg-deep); background: var(--gold); border-radius: 50px; padding: 0.2rem 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .tee-ar { font-family: var(--font-arabic); color: var(--gold); margin-inline-start: 0.3rem; }
+  .tee-hero { font-size: 0.82rem; color: var(--gold); font-weight: 600; margin: -0.2rem 0 0.4rem; }
+  .product-footer { gap: 0.75rem; flex-wrap: wrap; }
+  .tee-story { font-size: 0.8rem; font-weight: 700; color: var(--gold); border: 1px solid rgba(212,168,67,0.4); border-radius: 8px; padding: 0.35rem 0.75rem; transition: all var(--transition); }
+  .tee-story:hover { background: var(--gold); color: var(--bg-deep); }
+  .tee-story--soon { color: var(--text-muted); border-color: rgba(255,255,255,0.15); }
+</style>
