@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Cart from '../components/Cart.astro';
 import ShopMenu from '../components/ShopMenu.astro';
+import CollectionBanner from '../components/CollectionBanner.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -21,6 +22,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
 
       <ShopMenu active="lunchbox" />
+
+      <CollectionBanner img="collection-lunchbox.jpg" alt="Lunchbox des héros des histoires" title="Des boîtes à repas pour l'école" text="Amira la fourmi, Arnoub le lapin, Salam le petit serpent et Nilo le crocodile accompagnent la pause de midi." />
 
       <div class="products-grid">
         <!-- Lunchbox Mohamed ﷺ — Enfant -->

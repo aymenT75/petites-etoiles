@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Cart from '../components/Cart.astro';
 import ShopMenu from '../components/ShopMenu.astro';
+import CollectionBanner from '../components/CollectionBanner.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -21,6 +22,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
 
       <ShopMenu active="gourdes" />
+
+      <CollectionBanner img="collection-gourdes.jpg" alt="Gourdes des héros des histoires" title="Des gourdes aux couleurs de l'eau" text="Nilo et le petit panier sur le Nil, Sabra et la source, Léo et la baleine, Qitta et le palmier : des histoires où l'eau est un cadeau." />
 
       <div class="products-grid">
         <!-- Gourde Mohamed ﷺ — Enfant -->
