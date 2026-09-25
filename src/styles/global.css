@@ -98,6 +98,28 @@ nav.scrolled { background: rgba(251,243,232,0.96); box-shadow: 0 4px 20px rgba(8
 .float-cta.show { opacity: 1; transform: none; pointer-events: auto; }
 [dir="rtl"] .float-cta { right: auto; left: 20px; }
 
+/* ── BOUTON MUSIQUE ── */
+.music-btn { position: fixed; left: 20px; bottom: 20px; z-index: 95; display: flex; align-items: center; gap: 0.55rem; height: 56px; padding: 0 1.1rem 0 0.45rem; border: 0; border-radius: 50px; cursor: pointer; background: #fff; color: var(--choco); font: 800 0.95rem var(--font-main); box-shadow: 0 6px 0 var(--caramel), 0 10px 24px rgba(55,37,24,0.18); transition: transform 0.2s, box-shadow 0.2s; }
+.music-btn:hover { transform: translateY(-2px); }
+.music-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--caramel), 0 4px 10px rgba(55,37,24,0.18); }
+.music-btn:focus-visible { outline: 3px solid var(--mer); outline-offset: 3px; }
+.music-ico { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-size: 1.35rem; background: var(--sable); transition: background 0.2s; }
+.music-btn.on .music-ico { background: var(--turquoise); }
+.music-lbl-on, .music-btn.on .music-lbl-off { display: none; }
+.music-btn.on .music-lbl-on { display: inline; }
+.music-bars { display: none; gap: 3px; align-items: flex-end; height: 16px; }
+.music-bars i { width: 4px; background: var(--mer); border-radius: 2px; animation: music-bar 1s ease-in-out infinite; }
+.music-bars i:nth-child(2) { animation-delay: 0.2s; } .music-bars i:nth-child(3) { animation-delay: 0.4s; }
+@keyframes music-bar { 0%, 100% { height: 5px; } 50% { height: 16px; } }
+.music-btn.on .music-bars { display: flex; }
+[dir="rtl"] .music-btn { left: auto; right: 20px; padding: 0 0.45rem 0 1.1rem; }
+@media (max-width: 640px) {
+  .music-btn { left: 14px; bottom: 14px; height: 52px; width: 52px; padding: 0; justify-content: center; }
+  [dir="rtl"] .music-btn { left: auto; right: 14px; padding: 0; }
+  .music-lbl, .music-btn.on .music-lbl-on, .music-btn.on .music-bars { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .music-bars i { animation: none; height: 10px; } }
+
 /* ── HERO ── */
 #hero { position: relative; overflow: hidden; padding: 110px 1.5rem 110px; background: linear-gradient(160deg, var(--sable-clair) 0%, var(--sable) 45%, var(--caramel) 100%); }
 #hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 82px; background: var(--creme); clip-path: ellipse(75% 100% at 50% 100%); }

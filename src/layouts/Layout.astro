@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import MusicButton from '../components/MusicButton.astro';
 interface Props { title?: string; }
 const { title = 'Petites Étoiles | نجوم صغيرة — Musique pour enfants' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -27,5 +28,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </head>
 <body>
   <slot />
+  <MusicButton />
 </body>
 </html>

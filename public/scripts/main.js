@@ -158,6 +158,7 @@ const i18n = {
   fr: {
     'nav.music':'Histoires','nav.shop':'Boutique','nav.about':'À propos','nav.contact':'Contact','nav.cart':'Panier',
     'nav.subscribe':"▶ S'abonner",
+    'music.play':'Musique','music.stop':'Couper',
     'hero.title':'Les histoires des Prophètes, <em>racontées par les animaux.</em>',
     'hero.sub':"Une chanson, un petit animal qui l'a vécue, et une belle histoire du Coran. Une nouvelle chaque semaine, pour les 4 à 7 ans.",
     'hero.cta1':'▶ Regarder les histoires','hero.cta2':'La boutique',
@@ -196,6 +197,7 @@ const i18n = {
   en: {
     'nav.music':'Stories','nav.shop':'Shop','nav.about':'About','nav.contact':'Contact','nav.cart':'Cart',
     'nav.subscribe':'▶ Subscribe',
+    'music.play':'Music','music.stop':'Stop',
     'hero.title':'The stories of the Prophets, <em>told by the animals.</em>',
     'hero.sub':'A song, a little animal who lived it, and a beautiful story from the Quran. A new one every week, for ages 4 to 7.',
     'hero.cta1':'▶ Watch the stories','hero.cta2':'The shop',
@@ -234,6 +236,7 @@ const i18n = {
   ar: {
     'nav.music':'القصص','nav.shop':'المتجر','nav.about':'عنّا','nav.contact':'تواصل','nav.cart':'السلة',
     'nav.subscribe':'▶ اشترك',
+    'music.play':'موسيقى','music.stop':'إيقاف',
     'hero.title':'قصص الأنبياء، <em>ترويها الحيوانات.</em>',
     'hero.sub':'أنشودة، وحيوان صغير عاش القصة، وحكاية جميلة من القرآن. قصة جديدة كل أسبوع، للأطفال من 4 إلى 7 سنوات.',
     'hero.cta1':'▶ شاهد القصص','hero.cta2':'المتجر',

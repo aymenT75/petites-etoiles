@@ -1,0 +1,33 @@
+---
+// Petite musique de fond : coupée par défaut (les navigateurs bloquent le son automatique),
+// un clic la lance. Le choix et la position de lecture sont gardés d'une page à l'autre.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<button class="music-btn" id="music-btn" type="button" aria-pressed="false" aria-label="Musique">
+  <span class="music-ico" aria-hidden="true">🎵</span>
+  <span class="music-lbl music-lbl-off" data-i18n="music.play">Musique</span>
+  <span class="music-lbl music-lbl-on" data-i18n="music.stop">Couper</span>
+  <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+</button>
+<audio id="music-audio" src={`${base}/musique/younes-instrumental.mp3`} loop preload="none"></audio>
+
+<script is:inline>
+  (() => {
+    const btn = document.getElementById('music-btn');
+    const audio = document.getElementById('music-audio');
+    const KEY = 'pe-music';
+    audio.volume = 0.35;
+    const get = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } };
+    const set = (v) => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch {} };
+    const show = (on) => { btn.classList.toggle('on', on); btn.setAttribute('aria-pressed', String(on)); };
+    const play = () => audio.play().then(() => show(true)).catch(() => show(false));
+    btn.addEventListener('click', () => {
+      if (audio.paused) { play(); set({ on: true, t: audio.currentTime }); }
+      else { audio.pause(); show(false); set({ on: false }); }
+    });
+    // reprend là où on en était en changeant de page (si le navigateur l'autorise)
+    const saved = get();
+    if (saved.on) { audio.currentTime = saved.t || 0; play(); }
+    window.addEventListener('pagehide', () => { if (!audio.paused) set({ on: true, t: audio.currentTime }); });
+  })();
+</script>
