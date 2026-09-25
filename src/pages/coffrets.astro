@@ -4,9 +4,24 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Cart from '../components/Cart.astro';
 import ShopMenu from '../components/ShopMenu.astro';
-import CollectionBanner from '../components/CollectionBanner.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Un coffret par petit animal : le t-shirt de son histoire + sa peluche + stickers + carte.
+const heroes = [
+  { slug: 'younes',      name: 'Younes',    ar: 'يونس',    hero: 'Léo le dauphin' },
+  { slug: 'salih',       name: 'Salih',     ar: 'صالح',    hero: 'Alwa la petite chamelle' },
+  { slug: 'maryam',      name: 'Maryam',    ar: 'مريم',    hero: 'Qitta la petite chatte' },
+  { slug: 'ibrahim',     name: 'Ibrahim',   ar: 'إبراهيم', hero: 'Salma la colombe' },
+  { slug: 'ayoub',       name: 'Ayoub',     ar: 'أيوب',    hero: 'Sabra le petit oiseau' },
+  { slug: 'moussa',      name: 'Moussa',    ar: 'موسى',    hero: 'Nilo le petit crocodile' },
+  { slug: 'kahf',        name: 'Al-Kahf',   ar: 'الكهف',   hero: 'Qitmir le petit chien' },
+  { slug: 'adam-salam',  name: 'Adam',      ar: 'آدم',     hero: 'Salam le serpent vert' },
+  { slug: 'adam-arnoub', name: 'Adam',      ar: 'آدم',     hero: 'Arnoub le lapin' },
+  { slug: 'soulayman',   name: 'Soulayman', ar: 'سليمان',  hero: 'Amira la fourmi' },
+  { slug: 'youssef',     name: 'Youssef',   ar: 'يوسف',    hero: 'Wael le petit loup' },
+  { slug: 'lout',        name: 'Lout',      ar: 'لوط',     hero: 'Hamouda le petit âne' },
+];
 ---
 
 <Layout title="Coffrets cadeaux — Petites Étoiles">
@@ -23,8 +38,29 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       <ShopMenu active="coffrets" />
 
-      <CollectionBanner img="collection-coffrets.jpg" alt="Coffret cadeau avec t-shirt, peluche et stickers" title="Le coffret « héros des histoires »" text="Le t-shirt d'une histoire, la peluche de son petit animal, une planche de stickers et une carte : prêt à offrir." />
+      <h2 class="tee-group-title">Les coffrets des héros <span>✨ Nouveau</span></h2>
+      <p class="tee-group-desc">Le t-shirt d'une histoire, la peluche de son petit animal, une planche de stickers et une carte : prêt à offrir.</p>
+      <div class="products-grid">
+        {heroes.map((h, i) => (
+          <div class={`product-card reveal reveal-delay-${i % 4}`}>
+            <span class="product-badge new">Nouveau</span>
+            <div class="product-image product-image--photo coffret-photo">
+              <div class="product-image-bg" style="background:#f3e6d0"></div>
+              <img src={`${base}/coffret-heros-${h.slug}.jpg`} alt={`Coffret cadeau ${h.name} avec ${h.hero}`} class="product-photo" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <div class="product-name">Coffret {h.name} <span class="tee-ar">{h.ar}</span></div>
+              <div class="tee-hero">avec {h.hero}</div>
+              <div class="product-desc">T-shirt de l'histoire, peluche {h.hero.split(' ')[0]}, stickers et carte, dans une boîte kraft prête à offrir.</div>
+              <div class="product-footer">
+                <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
+      <h2 class="tee-group-title">La collection classique</h2>
       <div class="products-grid">
         <!-- Coffret cadeau Mohamed ﷺ -->
         <div class="product-card reveal">
@@ -120,3 +156,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <script is:inline src="/petites-etoiles/scripts/main.js"></script>
 </Layout>
+
+<style>
+  .tee-group-title { font-family: var(--font-title); font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 0.5rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .tee-group-title span { font-family: var(--font-main); font-size: 0.72rem; font-weight: 800; color: #fff; background: var(--mer); border-radius: 50px; padding: 0.2rem 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .tee-group-desc { color: var(--text-muted); margin-bottom: 1.25rem; }
+  .tee-ar { font-family: var(--font-arabic); color: var(--gold); margin-inline-start: 0.3rem; }
+  .tee-hero { font-size: 0.82rem; color: var(--gold); font-weight: 700; margin: -0.2rem 0 0.4rem; }
+  .coffret-photo { height: auto; aspect-ratio: 1 / 1; }
+</style>
