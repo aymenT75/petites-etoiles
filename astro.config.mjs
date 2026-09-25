@@ -1,10 +1,8 @@
 import { defineConfig } from 'astro/config';
 
-// Pour GitHub Pages — remplace YOUR-USERNAME par ton pseudo GitHub
-// Si le repo s'appelle petites-etoiles : base = '/petites-etoiles'
-// Si le repo s'appelle USERNAME.github.io : base = '/'
+// GitHub Pages avec le domaine perso pettitesetoiles.com (fichier public/CNAME) : le site est à la racine.
 export default defineConfig({
-  site: 'https://aymenT75.github.io',
-  base: '/petites-etoiles',
+  site: 'https://pettitesetoiles.com',
+  base: '/',
   output: 'static',
 });
