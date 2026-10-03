@@ -8,32 +8,37 @@ import ShopMenu from '../components/ShopMenu.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const yt = (id: string) => `https://www.youtube.com/watch?v=${id}`;
 const channel = 'https://www.youtube.com/@NajomSaghira';
+const etsyShop = 'https://www.etsy.com/shop/PetitesEtoilesKids';
+const etsyListing = (id: string) => `https://www.etsy.com/listing/${id}`;
 
 // `video` = id YouTube de l'histoire du personnage (null si pas encore sortie).
+// `etsy` = id de l'annonce Etsy quand le t-shirt est en vente (sinon « Prix à venir »).
 // Une scène clé par histoire, aquarelle, même famille que la collection classique.
 const characters = [
   { slug: 'younes',      name: 'Younes',    ar: 'يونس',    hero: 'Léo le dauphin',         video: 'uRQHHo8f_7A', desc: 'Léo nage aux côtés de la grande baleine, sous le croissant de lune.' },
-  { slug: 'salih',       name: 'Salih',     ar: 'صالح',    hero: 'Alwa la petite chamelle', video: '45K4DBB4ljE', desc: "Alwa devant le rocher fendu d'où elle est sortie." },
+  { slug: 'salih',       name: 'Salih',     ar: 'صالح',    hero: 'Alwa la petite chamelle', video: '45K4DBB4ljE', etsy: '4587647007', desc: "Alwa devant le rocher fendu d'où elle est sortie." },
   { slug: 'maryam',      name: 'Maryam',    ar: 'مريم',    hero: 'Qitta la petite chatte',  video: 'wDEyUEgT2X4', desc: 'Qitta sous le palmier aux dattes, près de la petite source.' },
   { slug: 'ibrahim',     name: 'Ibrahim',   ar: 'إبراهيم', hero: 'Salma la colombe',        video: 't19e3EJc5TI', desc: 'Salma vole au-dessus du feu devenu un jardin de fleurs.' },
   { slug: 'ayoub',       name: 'Ayoub',     ar: 'أيوب',    hero: 'Sabra le petit oiseau',   video: 'L_IWY0sqdTo', desc: 'Sabra chante au-dessus de la source qui jaillit.' },
-  { slug: 'moussa',      name: 'Moussa',    ar: 'موسى',    hero: 'Nilo le petit crocodile', video: 'oSS6knrQhO8', desc: 'Nilo veille sur le petit panier qui flotte sur le Nil.' },
-  { slug: 'kahf',        name: 'Al-Kahf',   ar: 'الكهف',   hero: 'Qitmir le petit chien',   video: 'OvfA6ZMUn9E', desc: 'Qitmir endormi devant la caverne, sous les étoiles.' },
+  { slug: 'moussa',      name: 'Moussa',    ar: 'موسى',    hero: 'Nilo le petit crocodile', video: 'oSS6knrQhO8', etsy: '4587647729', desc: 'Nilo veille sur le petit panier qui flotte sur le Nil.' },
+  { slug: 'kahf',        name: 'Al-Kahf',   ar: 'الكهف',   hero: 'Qitmir le petit chien',   video: 'OvfA6ZMUn9E', etsy: '4587620149', desc: 'Qitmir endormi devant la caverne, sous les étoiles.' },
+  { slug: 'abel-cain',   name: 'Abel & Caïn', ar: 'هابيل وقابيل', hero: 'le corbeau',      video: null,          etsy: '4587648007', desc: 'Le corbeau, le chaton et le petit chameau dans le désert.' },
   { slug: 'adam-salam',  name: 'Adam',      ar: 'آدم',     hero: 'Salam le serpent vert',   video: 'T3opGNWTQdA', desc: "Salam, le petit serpent qui n'y est pour rien, sous l'arbre du jardin." },
   { slug: 'adam-arnoub', name: 'Adam',      ar: 'آدم',     hero: 'Arnoub le lapin',         video: 'T3opGNWTQdA', desc: 'Arnoub dans le jardin fleuri.' },
-  { slug: 'soulayman',   name: 'Soulayman', ar: 'سليمان',  hero: 'Amira la fourmi',         video: 'rFLnZKPyOJA', desc: "Amira prévient ses amies : l'armée arrive !" },
+  { slug: 'soulayman',   name: 'Soulayman', ar: 'سليمان',  hero: 'Amira la fourmi',         video: 'rFLnZKPyOJA', etsy: '4587653188', desc: "Amira prévient ses amies : l'armée arrive !" },
   { slug: 'youssef',     name: 'Youssef',   ar: 'يوسف',    hero: 'Wael le petit loup',      video: null,          desc: 'Wael, le petit loup innocent, près du puits.' },
   { slug: 'lout',        name: 'Lout',      ar: 'لوط',     hero: 'Hamouda le petit âne',    video: 'XZhFNJjZviY', desc: 'Hamouda et sa lanterne sur le chemin, la nuit.' },
 ];
 
 const classics = [
   { slug: 'souleymane', name: 'Souleymane', ar: 'سليمان', bg: '#0f1c33', video: 'rFLnZKPyOJA', desc: 'Le cheval ailé, la fourmi, la huppe et le palais de Souleymane.' },
-  { slug: 'nouh',       name: 'Nouh',       ar: 'نوح',    bg: '#cfe8f5', video: 'srv5M3jML2E', desc: "L'Arche de Nouh, l'arc-en-ciel et les animaux deux par deux." },
-  { slug: 'adam',       name: 'Adam',       ar: 'آدم',    bg: '#c8ead9', video: 'T3opGNWTQdA', desc: "Le jardin d'Éden, le lion, le chameau et le perroquet." },
-  { slug: 'mohammed',   name: 'Mohamed',    ar: 'محمد',   bg: '#0f1c33', video: null,          desc: "La grotte, un jeune chameau et la toile d'araignée protectrice." },
+  { slug: 'nouh',       name: 'Nouh',       ar: 'نوح',    bg: '#cfe8f5', video: 'srv5M3jML2E', etsy: '4587651110', desc: "L'Arche de Nouh, l'arc-en-ciel et les animaux deux par deux." },
+  { slug: 'adam',       name: 'Adam',       ar: 'آدم',    bg: '#c8ead9', video: 'T3opGNWTQdA', etsy: '4587625042', desc: "Le jardin d'Éden, le lion, le chameau et le perroquet." },
+  { slug: 'mohammed',   name: 'Mohamed',    ar: 'محمد',   bg: '#0f1c33', video: null,          etsy: '4587620253', desc: "La grotte, un jeune chameau et la toile d'araignée protectrice." },
 ];
 
-const sizes = ['2 ans', '4 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans'];
+// Tailles des t-shirts vendus sur Etsy (Gildan enfant).
+const sizes = ['XS · 4-5 ans', 'S · 6-8 ans', 'M · 10-12 ans', 'L · 14-16 ans', 'XL · 18-20 ans'];
 ---
 
 <Layout title="T-shirts — Petites Étoiles">
@@ -45,7 +50,8 @@ const sizes = ['2 ans', '4 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans']
       <div class="section-header">
         <div class="section-tag">Boutique</div>
         <h1 class="section-title">Les <em>t-shirts</em> Petites Étoiles</h1>
-        <p class="section-desc">Des t-shirts enfant 100% coton bio, à l'effigie des petits héros qui racontent les histoires des Prophètes sur notre chaîne.</p>
+        <p class="section-desc">Des t-shirts enfant 100% coton, à l'effigie des petits héros qui racontent les histoires des Prophètes sur notre chaîne.</p>
+        <a class="etsy-shop-link" href={etsyShop} target="_blank" rel="noopener">🛍️ Commander sur notre boutique Etsy</a>
       </div>
 
       <ShopMenu active="t-shirts" />
@@ -63,18 +69,21 @@ const sizes = ['2 ans', '4 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans']
             <div class="product-body">
               <div class="product-name">T-shirt {c.name} <span class="tee-ar">{c.ar}</span></div>
               <div class="tee-hero">avec {c.hero}</div>
-              <div class="product-desc">{c.desc} 100% coton bio.</div>
+              <div class="product-desc">{c.desc} 100% coton.</div>
               <div class="size-chips">
                 {sizes.map((s) => (
                   <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">{s}</button>
                 ))}
               </div>
               <div class="product-footer">
-                <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+                {c.etsy
+                  ? <div class="product-price"><span class="currency">€</span>19,90</div>
+                  : <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>}
                 {c.video
                   ? <a class="tee-story" href={yt(c.video)} target="_blank" rel="noopener">▶ Voir l'histoire</a>
-                  : <a class="tee-story tee-story--soon" href={channel} target="_blank" rel="noopener">Histoire bientôt</a>}
+                  : !c.etsy && <a class="tee-story tee-story--soon" href={channel} target="_blank" rel="noopener">Histoire bientôt</a>}
               </div>
+              {c.etsy && <a class="etsy-buy" href={etsyListing(c.etsy)} target="_blank" rel="noopener">Acheter sur Etsy</a>}
             </div>
           </div>
         ))}
@@ -91,16 +100,19 @@ const sizes = ['2 ans', '4 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans']
             </div>
             <div class="product-body">
               <div class="product-name">T-shirt {c.name} <span class="tee-ar">{c.ar}</span></div>
-              <div class="product-desc">{c.desc} 100% coton bio.</div>
+              <div class="product-desc">{c.desc} 100% coton.</div>
               <div class="size-chips">
                 {sizes.map((s) => (
                   <button class="size-chip" type="button" onclick="this.parentElement.querySelectorAll('.size-chip').forEach(b => b.classList.remove('active')); this.classList.add('active')">{s}</button>
                 ))}
               </div>
               <div class="product-footer">
-                <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+                {c.etsy
+                  ? <div class="product-price"><span class="currency">€</span>19,90</div>
+                  : <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>}
                 {c.video && <a class="tee-story" href={yt(c.video)} target="_blank" rel="noopener">▶ Voir l'histoire</a>}
               </div>
+              {c.etsy && <a class="etsy-buy" href={etsyListing(c.etsy)} target="_blank" rel="noopener">Acheter sur Etsy</a>}
             </div>
           </div>
         ))}
@@ -125,4 +137,8 @@ const sizes = ['2 ans', '4 ans', '6 ans', '8 ans', '10 ans', '12 ans', '14 ans']
   .tee-story { font-size: 0.85rem; font-weight: 800; color: var(--mer); border: 1.5px solid var(--mer); border-radius: 999px; padding: 0.35rem 0.75rem; transition: all var(--transition); }
   .tee-story:hover { background: var(--mer); color: #fff; }
   .tee-story--soon { color: var(--text-muted); border-color: var(--border); }
+  .etsy-buy { display: block; margin-top: 0.85rem; text-align: center; font-weight: 800; font-size: 0.92rem; color: #fff; background: #f1641e; border-radius: 999px; padding: 0.6rem 1rem; transition: filter var(--transition); }
+  .etsy-buy:hover { filter: brightness(1.08); }
+  .etsy-shop-link { display: inline-block; margin-top: 1rem; font-weight: 800; color: #f1641e; border: 1.5px solid #f1641e; border-radius: 999px; padding: 0.5rem 1.1rem; transition: all var(--transition); }
+  .etsy-shop-link:hover { background: #f1641e; color: #fff; }
 </style>
