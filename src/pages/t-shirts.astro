@@ -16,16 +16,16 @@ const etsyListing = (id: string) => `https://www.etsy.com/listing/${id}`;
 // Une scène clé par histoire, aquarelle, même famille que la collection classique.
 const characters = [
   { slug: 'younes',      name: 'Younes',    ar: 'يونس',    hero: 'Léo le dauphin',         video: 'uRQHHo8f_7A', desc: 'Léo nage aux côtés de la grande baleine, sous le croissant de lune.' },
-  { slug: 'salih',       name: 'Salih',     ar: 'صالح',    hero: 'Alwa la petite chamelle', video: '45K4DBB4ljE', etsy: '4587647007', desc: "Alwa devant le rocher fendu d'où elle est sortie." },
+  { slug: 'salih',       name: 'Salih',     ar: 'صالح',    hero: 'Alwa la petite chamelle', video: '45K4DBB4ljE', etsy: '4588055182', desc: "Alwa devant le rocher fendu d'où elle est sortie." },
   { slug: 'maryam',      name: 'Maryam',    ar: 'مريم',    hero: 'Qitta la petite chatte',  video: 'wDEyUEgT2X4', desc: 'Qitta sous le palmier aux dattes, près de la petite source.' },
   { slug: 'ibrahim',     name: 'Ibrahim',   ar: 'إبراهيم', hero: 'Salma la colombe',        video: 't19e3EJc5TI', desc: 'Salma vole au-dessus du feu devenu un jardin de fleurs.' },
   { slug: 'ayoub',       name: 'Ayoub',     ar: 'أيوب',    hero: 'Sabra le petit oiseau',   video: 'L_IWY0sqdTo', desc: 'Sabra chante au-dessus de la source qui jaillit.' },
-  { slug: 'moussa',      name: 'Moussa',    ar: 'موسى',    hero: 'Nilo le petit crocodile', video: 'oSS6knrQhO8', desc: 'Nilo veille sur le petit panier qui flotte sur le Nil.' },
-  { slug: 'kahf',        name: 'Al-Kahf',   ar: 'الكهف',   hero: 'Qitmir le petit chien',   video: 'OvfA6ZMUn9E', etsy: '4587620149', desc: 'Qitmir endormi devant la caverne, sous les étoiles.' },
-  { slug: 'abel-cain',   name: 'Abel & Caïn', ar: 'هابيل وقابيل', hero: 'le corbeau',      video: null,          etsy: '4587648007', desc: 'Le corbeau, le chaton et le petit chameau dans le désert.' },
+  { slug: 'moussa',      name: 'Moussa',    ar: 'موسى',    hero: 'Nilo le petit crocodile', video: 'oSS6knrQhO8', etsy: '4588056006', desc: 'Nilo veille sur le petit panier qui flotte sur le Nil.' },
+  { slug: 'kahf',        name: 'Al-Kahf',   ar: 'الكهف',   hero: 'Qitmir le petit chien',   video: 'OvfA6ZMUn9E', etsy: '4588053913', desc: 'Qitmir endormi devant la caverne, sous les étoiles.' },
+  { slug: 'abel-cain',   name: 'Abel & Caïn', ar: 'هابيل وقابيل', hero: 'le corbeau',      video: null,          etsy: '4588053851', desc: 'Le corbeau, le chaton et le petit chameau dans le désert.' },
   { slug: 'adam-salam',  name: 'Adam',      ar: 'آدم',     hero: 'Salam le serpent vert',   video: 'T3opGNWTQdA', desc: "Salam, le petit serpent qui n'y est pour rien, sous l'arbre du jardin." },
   { slug: 'adam-arnoub', name: 'Adam',      ar: 'آدم',     hero: 'Arnoub le lapin',         video: 'T3opGNWTQdA', desc: 'Arnoub dans le jardin fleuri.' },
-  { slug: 'soulayman',   name: 'Soulayman', ar: 'سليمان',  hero: 'Amira la fourmi',         video: 'rFLnZKPyOJA', etsy: '4587653188', desc: "Amira prévient ses amies : l'armée arrive !" },
+  { slug: 'soulayman',   name: 'Soulayman', ar: 'سليمان',  hero: 'Amira la fourmi',         video: 'rFLnZKPyOJA', etsy: '4588058196', desc: "Amira prévient ses amies : l'armée arrive !" },
   { slug: 'youssef',     name: 'Youssef',   ar: 'يوسف',    hero: 'Wael le petit loup',      video: null,          desc: 'Wael, le petit loup innocent, près du puits.' },
   { slug: 'lout',        name: 'Lout',      ar: 'لوط',     hero: 'Hamouda le petit âne',    video: 'XZhFNJjZviY', desc: 'Hamouda et sa lanterne sur le chemin, la nuit.' },
 ];
@@ -34,8 +34,8 @@ const classics = [
   { slug: 'souleymane', name: 'Souleymane', ar: 'سليمان', bg: '#0f1c33', video: 'rFLnZKPyOJA', desc: 'Le cheval ailé, la fourmi, la huppe et le palais de Souleymane.' },
   { slug: 'nouh',       name: 'Nouh',       ar: 'نوح',    bg: '#cfe8f5', video: 'srv5M3jML2E', etsy: '4587651110', desc: "L'Arche de Nouh, l'arc-en-ciel et les animaux deux par deux." },
   { slug: 'adam',       name: 'Adam',       ar: 'آدم',    bg: '#c8ead9', video: 'T3opGNWTQdA', etsy: '4587948327', desc: "Le jardin d'Éden, le lion, le chameau et le perroquet." },
-  { slug: 'moussa-mer', name: 'Moussa',     ar: 'موسى',   bg: '#ffffff', video: 'oSS6knrQhO8', etsy: '4587647729', desc: "La mer qui s'ouvre, le bâton de Moussa, les dauphins et les poissons." },
-  { slug: 'mohammed',   name: 'Mohamed',    ar: 'محمد',   bg: '#0f1c33', video: null,          etsy: '4587620253', desc: "La grotte, un jeune chameau et la toile d'araignée protectrice." },
+  { slug: 'moussa-mer', name: 'Moussa',     ar: 'موسى',   bg: '#ffffff', video: 'oSS6knrQhO8', etsy: '4588058262', desc: "La mer qui s'ouvre, le bâton de Moussa, les dauphins et les poissons." },
+  { slug: 'mohammed',   name: 'Mohamed',    ar: 'محمد',   bg: '#0f1c33', video: null,          etsy: '4588053969', desc: "La grotte, un jeune chameau et la toile d'araignée protectrice." },
 ];
 
 // Tailles des t-shirts vendus sur Etsy (Gildan enfant).
