@@ -7,6 +7,18 @@ import ShopMenu from '../components/ShopMenu.astro';
 import CollectionBanner from '../components/CollectionBanner.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const etsyShop = 'https://www.etsy.com/shop/PetitesEtoilesKids';
+const etsyListing = (id: string) => `https://www.etsy.com/listing/${id}`;
+
+// `etsy` = id de l'annonce Etsy de chaque gourde (Printify, 29,90 €).
+const gourdes = [
+  { slug: 'moussa',     name: 'Moussa',     ar: 'موسى',    hero: 'Nilo et le couffin sur le Nil', etsy: '4588249706', desc: 'Nilo le petit crocodile veille sur le couffin qui flotte sur le Nil, devant le palais de Pharaon.' },
+  { slug: 'youssef',    name: 'Youssef',    ar: 'يوسف',    hero: 'Le petit loup blanc',           etsy: '4588248092', desc: 'Wael, le petit loup blanc innocent, assis près du puits.' },
+  { slug: 'adam-lion',  name: 'Adam',       ar: 'آدم',     hero: 'Le lion du jardin',             etsy: '4588242561', desc: "Le lion, le chameau, l'agneau et le perroquet dans le jardin d'Adam." },
+  { slug: 'adam',       name: 'Adam',       ar: 'آدم',     hero: 'Le jardin fleuri',              etsy: '4588249788', desc: "Le prénom d'Adam en arabe, entouré de fleurs, de fraises et de papillons, tout autour de la gourde." },
+  { slug: 'souleymane', name: 'Souleymane', ar: 'سليمان',  hero: 'La fourmi et le cheval ailé',   etsy: '4588244451', desc: 'La petite fourmi et le cheval ailé dans les nuages, avec « Bismillah ar-Rahman ar-Rahim ».' },
+  { slug: 'mohammed',   name: 'Muhammad',   ar: 'محمد',    hero: 'Le petit chameau',              etsy: '4588243069', desc: "Le petit chameau tout doux de l'histoire du Prophète Muhammad ﷺ." },
+];
 ---
 
 <Layout title="Gourdes — Petites Étoiles">
@@ -18,79 +30,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="section-header">
         <div class="section-tag">Boutique</div>
         <h1 class="section-title">Les <em>gourdes</em> Petites Étoiles</h1>
-        <p class="section-desc">Des gourdes en inox pour enfant, illustrées avec les histoires des Prophètes. 100% inox alimentaire.</p>
+        <p class="section-desc">Des gourdes en inox pour enfant, illustrées avec les histoires des Prophètes. Inox isotherme double paroi, 600 ml.</p>
       </div>
 
       <ShopMenu active="gourdes" />
 
-      <CollectionBanner img="collection-gourdes.jpg" alt="Gourdes des héros des histoires" title="Des gourdes aux couleurs de l'eau" text="Nilo et le petit panier sur le Nil, Sabra et la source, Léo et la baleine, Qitta et le palmier : des histoires où l'eau est un cadeau." />
+      <CollectionBanner img="collection-gourdes.jpg" alt="Gourdes des héros des histoires" title="Des gourdes aux couleurs de l'eau" text="Nilo et le petit panier sur le Nil, Sabra et la source, Léo et la baleine, Qitta et le palmier : des histoires où l'eau est un cadeau." price={false} />
+
+      <a class="etsy-shop-link" href={etsyShop} target="_blank" rel="noopener">🛍️ Commander sur notre boutique Etsy</a>
 
       <div class="products-grid">
-        <!-- Gourde Mohamed ﷺ — Enfant -->
-        <div class="product-card reveal">
-          <span class="product-badge new">Nouveau</span>
-          <div class="product-image product-image--photo">
-            <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
-            <img src={`${base}/gourde-mohammed.jpg`} alt="Gourde Mohamed ﷺ — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <div class="product-image-fallback" style="display:none"><span>🥤</span></div>
-          </div>
-          <div class="product-body">
-            <div class="product-name">Gourde Mohamed ﷺ — Enfant</div>
-            <div class="product-desc">Gourde inox blanche — un jeune chameau dans le désert étoilé.</div>
-            <div class="product-footer">
-              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
+        {gourdes.map((g, i) => (
+          <div class={`product-card reveal reveal-delay-${i % 4}`}>
+            <span class="product-badge new">Nouveau</span>
+            <div class="product-image product-image--photo">
+              <div class="product-image-bg" style="background:#ffffff"></div>
+              <img src={`${base}/gourde-${g.slug}.jpg`} alt={`Gourde ${g.name} — ${g.hero}`} class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+              <div class="product-image-fallback" style="display:none"><span>🥤</span></div>
+            </div>
+            <div class="product-body">
+              <div class="product-name">Gourde {g.name} <span class="g-ar">{g.ar}</span></div>
+              <div class="g-hero">{g.hero}</div>
+              <div class="product-desc">{g.desc} Inox isotherme, 600 ml.</div>
+              <div class="product-footer">
+                <div class="product-price"><span class="currency">€</span>29,90</div>
+              </div>
+              <a class="etsy-buy" href={etsyListing(g.etsy)} target="_blank" rel="noopener">Acheter sur Etsy</a>
             </div>
           </div>
-        </div>
-        <!-- Gourde Adam عليه السلام — Enfant -->
-        <div class="product-card reveal reveal-delay-1">
-          <span class="product-badge new">Nouveau</span>
-          <div class="product-image product-image--photo">
-            <div class="product-image-bg" style="background:linear-gradient(135deg,#c8ead9,#e4f5ec)"></div>
-            <img src={`${base}/gourde-adam.jpg`} alt="Gourde Adam عليه السلام — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <div class="product-image-fallback" style="display:none"><span>🥤</span></div>
-          </div>
-          <div class="product-body">
-            <div class="product-name">Gourde Adam عليه السلام — Enfant</div>
-            <div class="product-desc">Gourde inox verte — fleurs, papillons et fraises du jardin d'Éden.</div>
-            <div class="product-footer">
-              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
-            </div>
-          </div>
-        </div>
-        <!-- Gourde Souleymane عليه السلام — Enfant -->
-        <div class="product-card reveal reveal-delay-2">
-          <span class="product-badge new">Nouveau</span>
-          <div class="product-image product-image--photo">
-            <div class="product-image-bg" style="background:linear-gradient(135deg,#e8f0f8,#d0e4f5)"></div>
-            <img src={`${base}/gourde-souleymane.jpg`} alt="Gourde Souleymane عليه السلام — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <div class="product-image-fallback" style="display:none"><span>🥤</span></div>
-          </div>
-          <div class="product-body">
-            <div class="product-name">Gourde Souleymane عليه السلام — Enfant</div>
-            <div class="product-desc">Gourde inox — licorne ailée, abeille et Bismillah dans les nuages.</div>
-            <div class="product-footer">
-              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
-            </div>
-          </div>
-        </div>
-        <!-- Gourde Moussa عليه السلام — Enfant -->
-        <div class="product-card reveal reveal-delay-3">
-          <span class="product-badge new">Nouveau</span>
-          <div class="product-image product-image--photo">
-            <div class="product-image-bg" style="background:linear-gradient(135deg,#cfe8f5,#e8f4fb)"></div>
-            <img src={`${base}/gourde-moussa.jpg`} alt="Gourde Moussa عليه السلام — Enfant" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-            <div class="product-image-fallback" style="display:none"><span>🥤</span></div>
-          </div>
-          <div class="product-body">
-            <div class="product-name">Gourde Moussa عليه السلام — Enfant</div>
-            <div class="product-desc">Gourde inox — les vagues de la mer et ses créatures marines.</div>
-            <div class="product-footer">
-              <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Prix à venir</div>
-            </div>
-          </div>
-        </div>
-
+        ))}
       </div>
     </div>
   </section>
@@ -100,3 +68,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <script is:inline src="/scripts/main.js"></script>
 </Layout>
+
+<style>
+  .product-image--photo { height: auto; aspect-ratio: 1 / 1; }
+  .g-ar { font-family: var(--font-arabic); color: var(--gold); margin-inline-start: 0.3rem; }
+  .g-hero { font-size: 0.82rem; color: var(--gold); font-weight: 600; margin: -0.2rem 0 0.4rem; }
+  .etsy-buy { display: block; margin-top: 0.85rem; text-align: center; font-weight: 800; font-size: 0.92rem; color: #fff; background: #f1641e; border-radius: 999px; padding: 0.6rem 1rem; transition: filter var(--transition); }
+  .etsy-buy:hover { filter: brightness(1.08); }
+  .etsy-shop-link { display: inline-block; margin: 0 0 1.5rem; font-weight: 800; color: #f1641e; border: 1.5px solid #f1641e; border-radius: 999px; padding: 0.5rem 1.1rem; transition: all var(--transition); }
+  .etsy-shop-link:hover { background: #f1641e; color: #fff; }
+</style>
