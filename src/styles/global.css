@@ -299,6 +299,7 @@ section { position: relative; z-index: 1; padding: 5rem 1.5rem; }
 
 /* ── PIED DE PAGE (nuit) ── */
 footer { position: relative; z-index: 1; background: var(--nuit-2); color: #fff; padding: 4rem 1.5rem 2rem; }
+@media (max-width: 640px) { footer { padding-bottom: 6.5rem; } }
 footer .footer-brand p, footer .footer-col ul li a, footer .footer-bottom p { color: #c3d0de; }
 .footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.12); }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
