@@ -1,4 +1,5 @@
 ---
+import { onlyPublic } from '../lib/yt';
 // Les histoires des Prophètes publiées sur la chaîne YouTube (@NajomSaghira).
 // Pour ajouter un épisode : ajouter une ligne ici (fr = id de la vidéo française,
 // ar = id de la version arabe ; l'un des deux peut être null).
@@ -17,6 +18,8 @@ const stories = [
   { name: 'Lout',      ar: 'لوط',    emoji: '🌙', hook: 'Racontée par Hamouda le petit âne',         fr: 'XZhFNJjZviY', arId: null },
 ];
 
+const live = (await onlyPublic(stories, ['fr', 'arId'])).filter((s) => s.fr || s.arId);
+
 const watch = (id: string) => `https://www.youtube.com/watch?v=${id}`;
 const thumb = (id: string) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 ---
@@ -29,7 +32,7 @@ const thumb = (id: string) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
     </div>
 
     <div class="stories-grid">
-      {stories.map((s, i) => {
+      {live.map((s, i) => {
         const main = s.fr ?? s.arId;
         const mainLang = s.fr ? 'FR' : 'AR';
         return (

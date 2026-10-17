@@ -1,4 +1,5 @@
 ---
+import { onlyPublic } from '../lib/yt';
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -14,7 +15,7 @@ const etsyListing = (id: string) => `https://www.etsy.com/listing/${id}`;
 // `video` = id YouTube de l'histoire du personnage (null si pas encore sortie).
 // `etsy` = id de l'annonce Etsy quand le t-shirt est en vente (sinon « Prix à venir »).
 // Une scène clé par histoire, aquarelle, même famille que la collection classique.
-const characters = [
+const charactersAll = [
   { slug: 'younes',      name: 'Younes',    ar: 'يونس',    hero: 'Léo le dauphin',         video: 'uRQHHo8f_7A', desc: 'Léo nage aux côtés de la grande baleine, sous le croissant de lune.' },
   { slug: 'salih',       name: 'Salih',     ar: 'صالح',    hero: 'Alwa la petite chamelle', video: '45K4DBB4ljE', etsy: '4588055182', desc: "Alwa devant le rocher fendu d'où elle est sortie." },
   { slug: 'maryam',      name: 'Maryam',    ar: 'مريم',    hero: 'Qitta la petite chatte',  video: 'wDEyUEgT2X4', desc: 'Qitta sous le palmier aux dattes, près de la petite source.' },
@@ -30,13 +31,17 @@ const characters = [
   { slug: 'lout',        name: 'Lout',      ar: 'لوط',     hero: 'Hamouda le petit âne',    video: 'XZhFNJjZviY', desc: 'Hamouda et sa lanterne sur le chemin, la nuit.' },
 ];
 
-const classics = [
+const characters = await onlyPublic(charactersAll, ['video']);
+
+const classicsAll = [
   { slug: 'souleymane', name: 'Souleymane', ar: 'سليمان', bg: '#0f1c33', video: 'rFLnZKPyOJA', desc: 'Le cheval ailé, la fourmi, la huppe et le palais de Souleymane.' },
   { slug: 'nouh',       name: 'Nouh',       ar: 'نوح',    bg: '#cfe8f5', video: 'srv5M3jML2E', etsy: '4587651110', desc: "L'Arche de Nouh, l'arc-en-ciel et les animaux deux par deux." },
   { slug: 'adam',       name: 'Adam',       ar: 'آدم',    bg: '#c8ead9', video: 'T3opGNWTQdA', etsy: '4587948327', desc: "Le jardin d'Éden, le lion, le chameau et le perroquet." },
   { slug: 'moussa-mer', name: 'Moussa',     ar: 'موسى',   bg: '#ffffff', video: 'oSS6knrQhO8', etsy: '4588058262', desc: "La mer qui s'ouvre, le bâton de Moussa, les dauphins et les poissons." },
   { slug: 'mohammed',   name: 'Mohamed',    ar: 'محمد',   bg: '#0f1c33', video: null,          etsy: '4588053969', desc: "La grotte, un jeune chameau et la toile d'araignée protectrice." },
 ];
+
+const classics = await onlyPublic(classicsAll, ['video']);
 
 // Tailles des t-shirts vendus sur Etsy (Gildan enfant).
 const sizes = ['XS · 4-5 ans', 'S · 6-8 ans', 'M · 10-12 ans', 'L · 14-16 ans', 'XL · 18-20 ans'];

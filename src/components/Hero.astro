@@ -1,7 +1,14 @@
 ---
+import { isPublic } from '../lib/yt';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 // Histoire mise en avant dans la carte vidéo du haut de page.
-const featured = { id: 'uRQHHo8f_7A', mascot: 'leo', mascotAlt: 'Léo le dauphin' };
+const candidates = [
+  { id: 'uRQHHo8f_7A', mascot: 'leo',  mascotAlt: 'Léo le dauphin',        key: 'hero.card',        label: 'Younes et le grand poisson' },
+  { id: 'oSS6knrQhO8', mascot: 'nilo', mascotAlt: 'Nilo le petit crocodile', key: 'hero.card.moussa', label: 'Moussa et le crocodile Nilo' },
+  { id: 'srv5M3jML2E', mascot: 'salam', mascotAlt: 'Salam',                  key: 'hero.card.nouh',   label: 'Nouh et le grand bateau' },
+];
+let featured = candidates[candidates.length - 1];
+for (const c of candidates) { if (await isPublic(c.id)) { featured = c; break; } }
 ---
 <section id="hero">
   <div class="hero-grid">
@@ -29,7 +36,7 @@ const featured = { id: 'uRQHHo8f_7A', mascot: 'leo', mascotAlt: 'Léo le dauphin
           <img src={`https://img.youtube.com/vi/${featured.id}/hqdefault.jpg`} alt="" width="480" height="360" />
           <span class="hero-card-play" aria-hidden="true">▶</span>
         </div>
-        <div class="hero-card-cap"><i aria-hidden="true">▶</i><span data-i18n="hero.card">Younes et le grand poisson</span></div>
+        <div class="hero-card-cap"><i aria-hidden="true">▶</i><span data-i18n={featured.key}>{featured.label}</span></div>
       </a>
       <img class="hero-mascot" src={`${base}/personnages/${featured.mascot}.webp`} alt={featured.mascotAlt} width="170" height="154" />
     </div>
