@@ -8,7 +8,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="section-header">
       <div class="section-tag" data-i18n="shop.tag">Boutique</div>
       <h2 class="section-title" data-i18n="shop.title">L'univers <em>Petites Étoiles</em></h2>
-      <p class="section-desc" data-i18n="shop.desc">Musique, livres illustrés et goodies pour accompagner vos enfants dans la découverte des Prophètes.</p>
+      <p class="section-desc" data-i18n="shop.desc">Musique et t-shirts pour accompagner vos enfants dans la découverte des Prophètes.</p>
     </div>
 
     <ShopMenu />
@@ -58,151 +58,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <span class="product-badge new">Nouveau</span>
         <div class="product-image product-image--photo">
           <div class="product-image-bg" style="background:#f6f4ee"></div>
-          <img src={`${base}/tshirt-younes.jpg`} alt="T-shirts — Les héros des histoires" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <img src={`${base}/tshirt-salih.jpg`} alt="T-shirts — Les héros des histoires" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
           <div class="product-image-fallback" style="display:none"><span>👕</span></div>
         </div>
         <div class="product-body">
           <div class="product-name">T-shirts — Les héros des histoires</div>
-          <div class="product-desc">Une scène de chaque histoire, avec son petit animal : Léo, Alwa, Qitta, Qitmir, Nilo… 9 modèles déjà en vente sur Etsy, tailles 4 à 20 ans.</div>
+          <div class="product-desc">Une scène de chaque histoire, avec son petit animal : Alwa, Qitmir, Nilo, Amira… 9 modèles en vente sur Etsy, tailles 4 à 20 ans.</div>
           <div class="product-footer">
             <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
           </div>
         </div>
       </a>
-
-      <!-- Coques de téléphone -->
-      <a href={`${base}/coques-telephone`} class="product-card reveal reveal-delay-2" style="display:block;text-decoration:none;color:inherit">
-        <span class="product-badge new">Nouveau</span>
-        <div class="product-image product-image--photo">
-          <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
-          <img src={`${base}/collection-coques.jpg`} alt="Coques de téléphone — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-          <div class="product-image-fallback" style="display:none"><span>📱</span></div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Coques de téléphone — Les Prophètes</div>
-          <div class="product-desc">Nouveau : Alwa, Salma, Qitta et Hamouda en aquarelle. Et toujours Mohamed ﷺ, Adam, Souleymane, Nouh.</div>
-          <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Sweats à capuche -->
-      <a href={`${base}/sweats`} class="product-card reveal reveal-delay-3" style="display:block;text-decoration:none;color:inherit">
-        <span class="product-badge new">Nouveau</span>
-        <div class="product-image product-image--photo">
-          <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
-          <img src={`${base}/collection-sweats.jpg`} alt="Sweats à capuche — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-          <div class="product-image-fallback" style="display:none"><span>🧥</span></div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Sweats à capuche — Les Prophètes</div>
-          <div class="product-desc">Nouveau : Qitmir, Hamouda, Léo et Alwa. Et toujours Mohamed ﷺ, Adam, Souleymane, Nouh.</div>
-          <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Pyjamas -->
-      <a href={`${base}/pyjamas`} class="product-card reveal" style="display:block;text-decoration:none;color:inherit">
-        <span class="product-badge new">Nouveau</span>
-        <div class="product-image product-image--photo">
-          <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
-          <img src={`${base}/collection-pyjamas.jpg`} alt="Pyjamas — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-          <div class="product-image-fallback" style="display:none"><span>🛌</span></div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Pyjamas — Les Prophètes</div>
-          <div class="product-desc">Nouveau : Qitmir, Léo, Wael et Sabra, pantalon semé de lunes. Et toujours Mohamed ﷺ, Adam, Souleymane, Nouh, Moussa.</div>
-          <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Coffrets cadeaux -->
-      <a href={`${base}/coffrets`} class="product-card reveal reveal-delay-1" style="display:block;text-decoration:none;color:inherit">
-        <span class="product-badge new">Nouveau</span>
-        <div class="product-image product-image--photo">
-          <div class="product-image-bg" style="background:linear-gradient(135deg,#cfe8f5,#e8f4fb)"></div>
-          <img src={`${base}/collection-coffrets.jpg`} alt="Coffrets cadeaux — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-          <div class="product-image-fallback" style="display:none"><span>🎁</span></div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Coffrets cadeaux — Les Prophètes</div>
-          <div class="product-desc">Nouveau : le t-shirt d'une histoire, la peluche de son animal et des stickers, prêts à offrir.</div>
-          <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Jeu de cartes -->
-      <a href={`${base}/jeu-de-cartes`} class="product-card reveal reveal-delay-2" style="display:block;text-decoration:none;color:inherit">
-        <span class="product-badge new">Nouveau</span>
-        <div class="product-image product-image--photo">
-          <div class="product-image-bg" style="background:linear-gradient(135deg,#cfe0cb,#e4efe0)"></div>
-          <img src={`${base}/jeu-de-cartes-pack.jpg`} alt="Jeu des 7 familles des Prophètes — coffret" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-          <div class="product-image-fallback" style="display:none"><span>🃏</span></div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Jeu des 7 familles — Les Prophètes</div>
-          <div class="product-desc">Jeu de cartes éducatif et ludique pour découvrir les Prophètes et personnages du Coran en famille.</div>
-          <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir le jeu →</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Lunchbox -->
-      <a href={`${base}/lunchbox`} class="product-card reveal reveal-delay-3" style="display:block;text-decoration:none;color:inherit">
-        <span class="product-badge new">Nouveau</span>
-        <div class="product-image product-image--photo">
-          <div class="product-image-bg" style="background:linear-gradient(135deg,#0f1c33,#1a2f4d)"></div>
-          <img src={`${base}/collection-lunchbox.jpg`} alt="Lunchbox — Les Prophètes" class="product-photo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-          <div class="product-image-fallback" style="display:none"><span>🍱</span></div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Lunchbox — Les Prophètes</div>
-          <div class="product-desc">Nouveau : Amira, Arnoub, Salam et Nilo. Et toujours Mohamed ﷺ, Souleymane, Nouh, Moussa.</div>
-          <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Voir la collection →</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Peluches & cadeaux -->
-      <a href={`${base}/cadeaux`} class="product-card reveal" style="display:block;text-decoration:none;color:inherit">
-        <span class="product-badge soon">Bientôt</span>
-        <div class="product-image product-image--photo">
-          <div class="product-image-bg" style="background:#f3e6d0"></div>
-          <img src={`${base}/cadeaux-peluches.jpg`} alt="Peluches des héros des histoires" class="product-photo" loading="lazy" />
-        </div>
-        <div class="product-body">
-          <div class="product-name">Peluches &amp; cadeaux</div>
-          <div class="product-desc">Les peluches des petits animaux, la veilleuse étoilée et le vinyle magnétique qui joue toutes les chansons des histoires.</div>
-          <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--gold);font-weight:700">Découvrir →</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Albums illustrés -->
-      <div class="product-card reveal">
-        <span class="product-badge soon">Bientôt</span>
-        <div class="product-image">
-          <div class="product-image-bg"></div>
-          <div class="product-image-emoji">📖</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Albums illustrés — Les Prophètes</div>
-          <div class="product-desc">Livres jeunesse magnifiquement illustrés qui retracent les histoires des Prophètes. Bientôt disponible.</div>
-          <div class="product-footer">
-            <div class="product-price" style="font-size:0.95rem;color:var(--text-muted);font-weight:600">Bientôt disponible</div>
-          </div>
-        </div>
-      </div>
 
       <!--
       Poster

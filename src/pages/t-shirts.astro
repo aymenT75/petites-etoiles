@@ -26,7 +26,7 @@ const characters = [
   { slug: 'adam-salam',  name: 'Adam',      ar: 'آدم',     hero: 'Salam le serpent vert',   video: 'T3opGNWTQdA', desc: "Salam, le petit serpent qui n'y est pour rien, sous l'arbre du jardin." },
   { slug: 'adam-arnoub', name: 'Adam',      ar: 'آدم',     hero: 'Arnoub le lapin',         video: 'T3opGNWTQdA', desc: 'Arnoub dans le jardin fleuri.' },
   { slug: 'soulayman',   name: 'Soulayman', ar: 'سليمان',  hero: 'Amira la fourmi',         video: 'rFLnZKPyOJA', etsy: '4588058196', desc: "Amira prévient ses amies : l'armée arrive !" },
-  { slug: 'youssef',     name: 'Youssef',   ar: 'يوسف',    hero: 'Wael le petit loup',      video: null,          desc: 'Wael, le petit loup innocent, près du puits.' },
+  { slug: 'youssef',     name: 'Youssef',   ar: 'يوسف',    hero: 'Wael le petit loup',      video: 'bYr9CRodEUU',          desc: 'Wael, le petit loup innocent, près du puits.' },
   { slug: 'lout',        name: 'Lout',      ar: 'لوط',     hero: 'Hamouda le petit âne',    video: 'XZhFNJjZviY', desc: 'Hamouda et sa lanterne sur le chemin, la nuit.' },
 ];
 
@@ -59,7 +59,7 @@ const sizes = ['XS · 4-5 ans', 'S · 6-8 ans', 'M · 10-12 ans', 'L · 14-16 an
 
       <h2 class="tee-group-title">Les héros des histoires <span>✨ Nouveau</span></h2>
       <div class="products-grid">
-        {characters.map((c, i) => (
+        {characters.filter((c) => c.etsy).map((c, i) => (
           <div class={`product-card reveal reveal-delay-${i % 4}`}>
             <span class="product-badge new">Nouveau</span>
             <div class="product-image product-image--photo">
@@ -92,7 +92,7 @@ const sizes = ['XS · 4-5 ans', 'S · 6-8 ans', 'M · 10-12 ans', 'L · 14-16 an
 
       <h2 class="tee-group-title">La collection classique</h2>
       <div class="products-grid">
-        {classics.map((c, i) => (
+        {classics.filter((c) => c.etsy).map((c, i) => (
           <div class={`product-card reveal reveal-delay-${i % 4}`}>
             <div class="product-image product-image--photo">
               <div class="product-image-bg" style={`background:${c.bg}`}></div>
