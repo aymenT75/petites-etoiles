@@ -2,23 +2,23 @@
 import { onlyPublic } from '../lib/yt';
 // Les histoires des Prophètes publiées sur la chaîne YouTube (@NajomSaghira).
 // Pour ajouter un épisode : ajouter une ligne ici (fr = id de la vidéo française,
-// ar = id de la version arabe ; l'un des deux peut être null).
+// arId = id de la version arabe ; en = id de la version anglaise (chaîne Little Stars) ; chacun peut être absent).
 const stories = [
   { name: 'Soulayman', ar: 'سليمان', emoji: '🐜', hook: 'Une fourmi a arrêté une armée !',          fr: 'rFLnZKPyOJA', arId: 'NdnsC9pZxLs' },
-  { name: 'Moussa',    ar: 'موسى',   emoji: '🐊', hook: 'Racontée par Nilo le petit crocodile',     fr: 'oSS6knrQhO8', arId: '3JIiVSrPNDE' },
+  { name: 'Moussa',    ar: 'موسى',   emoji: '🐊', hook: 'Racontée par Nilo le petit crocodile',     fr: 'oSS6knrQhO8', arId: '3JIiVSrPNDE', en: 'ZsklLkox8aY' },
   { name: 'Adam',      ar: 'آدم',    emoji: '🐍', hook: "Ce n'est pas le serpent ! Adam et Hawa",    fr: 'rE-x-ZA7ISo', arId: 'T3opGNWTQdA' },
   { name: 'Ayoub',     ar: 'أيوب',   emoji: '🐦', hook: '« Tiens bon », chantait Sabra le petit oiseau',fr: 'L_IWY0sqdTo', arId: 'S4wlwZ55CvE' },
   { name: 'Les Gens de la Caverne', ar: 'أهل الكهف', emoji: '🐶', hook: 'Ils ont dormi 309 ans !', fr: null,          arId: 'OvfA6ZMUn9E' },
-  { name: 'Nouh',      ar: 'نوح',    emoji: '🌊', hook: "Racontée par les animaux de l'arche",      fr: 'srv5M3jML2E', arId: '46U_jen4ej0' },
-  { name: 'Ibrahim',   ar: 'إبراهيم', emoji: '🕊️', hook: 'Racontée par Salma la colombe',           fr: 't19e3EJc5TI', arId: null },
-  { name: 'Maryam',    ar: 'مريم',   emoji: '🌴', hook: 'Racontée par Qitta la petite chatte',      fr: 'wDEyUEgT2X4', arId: 'OTlbSW735W8' },
-  { name: 'Younes',    ar: 'يونس',   emoji: '🐋', hook: 'Racontée par Léo le dauphin',              fr: 'uRQHHo8f_7A', arId: 'GwBxXO3lTGE' },
+  { name: 'Nouh',      ar: 'نوح',    emoji: '🌊', hook: "Racontée par les animaux de l'arche",      fr: 'srv5M3jML2E', arId: '46U_jen4ej0', en: 'cFEaC7nVGpc' },
+  { name: 'Ibrahim',   ar: 'إبراهيم', emoji: '🕊️', hook: 'Racontée par Salma la colombe',           fr: 't19e3EJc5TI', arId: null, en: 'SK99j0tNYQc' },
+  { name: 'Maryam',    ar: 'مريم',   emoji: '🌴', hook: 'Racontée par Qitta la petite chatte',      fr: 'wDEyUEgT2X4', arId: 'OTlbSW735W8', en: 'RdWBUE813zc' },
+  { name: 'Younes',    ar: 'يونس',   emoji: '🐋', hook: 'Racontée par Léo le dauphin',              fr: 'uRQHHo8f_7A', arId: 'GwBxXO3lTGE', en: 'ov5nFKd3aIg' },
   { name: 'Salih',     ar: 'صالح',   emoji: '🐪', hook: 'Racontée par Alwa la petite chamelle',     fr: '45K4DBB4ljE', arId: '6bPQSRzxwWU' },
   { name: 'Youssef',   ar: 'يوسف',   emoji: '🐺', hook: "Ce n'est pas le loup ! Racontée par Wael le petit loup", fr: 'bYr9CRodEUU', arId: '_SGcPDlUqpM' },
   { name: 'Lout',      ar: 'لوط',    emoji: '🌙', hook: 'Racontée par Hamouda le petit âne',         fr: 'XZhFNJjZviY', arId: null },
 ];
 
-const live = (await onlyPublic(stories, ['fr', 'arId'])).filter((s) => s.fr || s.arId);
+const live = (await onlyPublic(stories, ['fr', 'arId', 'en'])).filter((s) => s.fr || s.arId || s.en);
 
 const watch = (id: string) => `https://www.youtube.com/watch?v=${id}`;
 const thumb = (id: string) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
@@ -33,8 +33,8 @@ const thumb = (id: string) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 
     <div class="stories-grid">
       {live.map((s, i) => {
-        const main = s.fr ?? s.arId;
-        const mainLang = s.fr ? 'FR' : 'AR';
+        const main = s.fr ?? s.arId ?? s.en;
+        const mainLang = s.fr ? 'FR' : s.arId ? 'AR' : 'EN';
         return (
           <article class={`story-card reveal reveal-delay-${(i % 4)}`}>
             <a class="story-thumb" href={watch(main)} target="_blank" rel="noopener" aria-label={`Regarder l'histoire de ${s.name} sur YouTube`}>
@@ -46,9 +46,12 @@ const thumb = (id: string) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
               <div class="story-name">{s.name} <span class="story-ar">{s.ar}</span></div>
               <div class="story-hook">{s.emoji} {s.hook}</div>
               <div class="story-links">
-                <a class="story-btn" href={watch(main)} target="_blank" rel="noopener">▶ {mainLang === 'FR' ? 'Regarder' : 'Regarder (arabe)'}</a>
-                {s.fr && s.arId && (
+                <a class="story-btn" href={watch(main)} target="_blank" rel="noopener">▶ {mainLang === 'FR' ? 'Regarder' : mainLang === 'AR' ? 'Regarder (arabe)' : 'Watch (English)'}</a>
+                {s.arId && main !== s.arId && (
                   <a class="story-btn story-btn--ar" href={watch(s.arId)} target="_blank" rel="noopener">النسخة العربية</a>
+                )}
+                {s.en && main !== s.en && (
+                  <a class="story-btn story-btn--en" href={watch(s.en)} target="_blank" rel="noopener">English version</a>
                 )}
               </div>
             </div>
@@ -77,5 +80,6 @@ const thumb = (id: string) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
   .story-links { display: flex; gap: 0.5rem 1rem; flex-wrap: wrap; margin-top: 0.5rem; align-items: center; }
   .story-btn { font-family: var(--font-title); font-weight: 600; font-size: 1rem; color: var(--mer); transition: color var(--transition); }
   .story-btn:hover { color: var(--mer-fonce); text-decoration: underline; }
+  .story-btn--en { font-weight: 700; color: var(--gold); }
   .story-btn--ar { font-family: var(--font-arabic); font-weight: 700; color: var(--gold); }
 </style>
