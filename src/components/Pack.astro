@@ -1,0 +1,33 @@
+---
+// Pack gratuit à imprimer pour les écoles coraniques, les mosquées et les familles.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const pdf = `${base}/pack/Pack_Najom_Saghira_ecoles_mosquees.pdf`;
+---
+<section id="pack">
+  <div class="container pack-wrap">
+    <a class="pack-cover" href={pdf} target="_blank" rel="noopener" aria-label="Ouvrir le pack gratuit (PDF)">
+      <img src={`${base}/pack/apercu-pack.png`} alt="Couverture du pack gratuit Petites Étoiles pour les écoles et mosquées" width="331" height="468" loading="lazy" />
+    </a>
+    <div class="pack-text">
+      <div class="section-tag" data-i18n="pack.tag">Gratuit</div>
+      <h2 class="section-title" data-i18n="pack.title">Un pack pour les écoles et les mosquées</h2>
+      <p class="section-desc" data-i18n="pack.desc">9 fiches d'histoires avec QR code vers la vidéo, 8 cartes de douâas à découper (texte du Coran et sens en français) et une séance clé en main de 15 minutes. À imprimer et partager librement.</p>
+      <a class="btn-primary" href={pdf} download data-i18n="pack.cta">⬇ Télécharger le pack (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  #pack { padding: 4rem 0; }
+  .pack-wrap { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; justify-content: center; }
+  .pack-cover { flex: none; display: block; width: 210px; border-radius: 14px; overflow: hidden; box-shadow: 0 14px 34px rgba(86,60,41,0.22); transform: rotate(-2deg); transition: transform var(--transition); }
+  .pack-cover:hover { transform: rotate(0deg) scale(1.02); }
+  .pack-cover img { display: block; width: 100%; height: auto; }
+  .pack-text { flex: 1; min-width: 260px; max-width: 560px; }
+  .pack-text .section-title, .pack-text .section-desc { text-align: left; margin-left: 0; }
+  .pack-text .btn-primary { display: inline-block; margin-top: 1rem; }
+  @media (max-width: 640px) {
+    .pack-text, .pack-text .section-title, .pack-text .section-desc { text-align: center; }
+    .pack-cover { width: 170px; }
+  }
+</style>
