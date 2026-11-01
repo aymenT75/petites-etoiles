@@ -163,15 +163,27 @@ section { position: relative; z-index: 1; padding: 5rem 1.5rem; }
 
 /* ── PERSONNAGES ── */
 #personnages { padding-top: 3.5rem; }
-.chars { display: flex; justify-content: center; gap: 1.75rem; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; }
-.char { width: 140px; text-align: center; font-family: var(--font-title); font-weight: 600; }
-.char-disc { width: 130px; height: 130px; margin: 0 auto 10px; border-radius: 50%; display: grid; place-items: center; overflow: hidden; box-shadow: inset 0 -8px 0 rgba(0,0,0,0.08); transition: transform var(--transition); }
-.char:hover .char-disc, .char:focus-visible .char-disc { transform: translateY(-6px) rotate(-3deg); }
-.char-disc img { width: 88%; height: 88%; object-fit: contain; }
-.char b { display: block; font-size: 1.1rem; color: var(--choco); }
-.char span { font-family: var(--font-main); font-size: 0.88rem; font-weight: 700; color: var(--brun); }
-.char .char-soon { display: table; margin: 4px auto 0; font-size: 0.72rem; font-weight: 800; color: var(--gold); background: var(--gold-dim); border-radius: 999px; padding: 1px 8px; }
-@media (max-width: 860px) { .chars { gap: 0.6rem; } .char { width: 100px; } .char-disc { width: 92px; height: 92px; } }
+.chars { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.25rem; max-width: 1080px; margin: 0 auto; }
+.char { position: relative; display: flex; flex-direction: column; align-items: center; padding: 10px 10px 14px; text-align: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: 0 4px 14px rgba(86,60,41,0.07); transition: transform var(--transition), box-shadow var(--transition); }
+.char:hover, .char:focus-visible { transform: translateY(-6px); box-shadow: var(--shadow-card); }
+.char-scene { position: relative; width: 100%; aspect-ratio: 1; margin-bottom: 10px; border-radius: 18px; overflow: hidden; display: grid; place-items: end center;
+  background: radial-gradient(circle at 50% 38%, rgba(255,255,255,0.75), rgba(255,255,255,0) 62%), var(--c); }
+.char-scene::before { content: '✦'; position: absolute; top: 8px; inset-inline-end: 11px; color: #fff; font-size: 0.95rem; opacity: 0.9; }
+.char-scene img { width: 94%; height: 94%; object-fit: contain; object-position: bottom; filter: drop-shadow(0 6px 6px rgba(55,37,24,0.15)); transition: transform var(--transition); }
+.char:hover .char-scene img, .char:focus-visible .char-scene img { transform: scale(1.06) rotate(-2deg); }
+.char-play { position: absolute; bottom: 8px; inset-inline-end: 8px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; padding-left: 2px; font-size: 0.75rem; color: var(--on-accent); background: var(--mer); box-shadow: 0 4px 10px rgba(27,91,127,0.35); transition: transform var(--transition); }
+.char:hover .char-play { transform: scale(1.12); }
+.char b { font-family: var(--font-title); font-size: 1.15rem; font-weight: 600; line-height: 1.2; color: var(--choco); }
+.char-story { margin-top: 2px; font-size: 0.86rem; font-weight: 700; color: var(--brun); }
+.char-story small { font-size: 0.78em; opacity: 0.75; }
+.p-ar { display: none; font-family: var(--font-arabic); }
+html[data-lang="ar"] .p-ar { display: inline; }
+html[data-lang="ar"] .p-lat { display: none; }
+.char-soon { position: absolute; top: 8px; inset-inline-start: 8px; padding: 3px 9px; border-radius: 999px; font-size: 0.7rem; font-weight: 800; color: var(--gold); background: rgba(255,255,255,0.92); }
+.char.is-soon { background: #fdf8f1; box-shadow: none; }
+.char.is-soon .char-scene img { filter: saturate(0.55); opacity: 0.8; }
+@media (max-width: 960px) { .chars { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .chars { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; } .char { padding: 7px 7px 10px; border-radius: var(--radius-md); } .char-scene { border-radius: 14px; } .char b { font-size: 1rem; } .char-story { font-size: 0.78rem; } .char-play { width: 26px; height: 26px; font-size: 0.6rem; } }
 
 /* ── HISTOIRES ── */
 #musique { background: var(--sable-clair); border-radius: 48px 48px 0 0; }

@@ -1,23 +1,27 @@
 ---
-import { onlyPublic } from '../lib/yt';
-// Les petits animaux qui racontent les histoires. `video` = null tant que l'épisode n'est pas sorti.
+import { isPublic } from '../lib/yt';
+// Les petits animaux qui racontent les histoires. `videos` = versions de l'épisode (fr, ar, en) par ordre de préférence :
+// on lie la première qui est publique, sinon la carte affiche « Bientôt ».
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const channel = 'https://www.youtube.com/@NajomSaghira';
+// `as` : formule après le nom (AS = عليه السلام) ; vide pour Al-Kahf.
 const characters = [
-  { slug: 'leo',     name: 'Léo',     prophet: 'Younes',  bg: '#cdebf2', video: 'uRQHHo8f_7A' },
-  { slug: 'alwa',    name: 'Alwa',    prophet: 'Salih',   bg: '#f2cc91', video: '45K4DBB4ljE' },
-  { slug: 'qitta',   name: 'Qitta',   prophet: 'Maryam',  bg: '#f3d9c4', video: 'wDEyUEgT2X4' },
-  { slug: 'salma',   name: 'Salma',   prophet: 'Ibrahim', bg: '#dbe7f3', video: 't19e3EJc5TI' },
-  { slug: 'sabra',   name: 'Sabra',   prophet: 'Ayoub',   bg: '#f8dcd6', video: 'L_IWY0sqdTo' },
-  { slug: 'nilo',    name: 'Nilo',    prophet: 'Moussa',  bg: '#d6ead0', video: 'oSS6knrQhO8' },
-  { slug: 'qitmir',  name: 'Qitmir',  prophet: 'Al-Kahf', bg: '#f0dcc4', video: 'OvfA6ZMUn9E' },
-  { slug: 'salam',   name: 'Salam',   prophet: 'Adam',    bg: '#d4efd0', video: 'T3opGNWTQdA' },
-  { slug: 'arnoub',  name: 'Arnoub',  prophet: 'Adam',    bg: '#eee4d6', video: 'T3opGNWTQdA' },
-  { slug: 'amira',   name: 'Amira',   prophet: 'Soulayman', bg: '#f6d6cc', video: 'rFLnZKPyOJA' },
-  { slug: 'wael',    name: 'Wael',    prophet: 'Youssef', bg: '#c9d3e3', video: 'bYr9CRodEUU' },
-  { slug: 'hamouda', name: 'Hamouda', prophet: 'Lout',    bg: '#efe0c6', video: 'XZhFNJjZviY' },
+  { slug: 'leo',     name: 'Léo', nameAr: 'ليو',     prophet: 'Younes',    ar: 'يونس',          as: true, bg: '#cdebf2', videos: ['uRQHHo8f_7A', 'GwBxXO3lTGE', 'ov5nFKd3aIg'] },
+  { slug: 'alwa',    name: 'Alwa', nameAr: 'علوة',    prophet: 'Salih',     ar: 'صالح',          as: true, bg: '#f2cc91', videos: ['45K4DBB4ljE', '6bPQSRzxwWU'] },
+  { slug: 'qitta',   name: 'Qitta', nameAr: 'قطة',   prophet: 'Maryam',    ar: 'مريم',          as: true, bg: '#f3d9c4', videos: ['wDEyUEgT2X4', 'OTlbSW735W8', 'RdWBUE813zc'] },
+  { slug: 'salma',   name: 'Salma', nameAr: 'سلمى',   prophet: 'Ibrahim',   ar: 'إبراهيم',       as: true, bg: '#dbe7f3', videos: ['t19e3EJc5TI', 'SK99j0tNYQc'] },
+  { slug: 'sabra',   name: 'Sabra', nameAr: 'صبرة',   prophet: 'Ayoub',     ar: 'أيوب',          as: true, bg: '#f8dcd6', videos: ['L_IWY0sqdTo', 'S4wlwZ55CvE'] },
+  { slug: 'nilo',    name: 'Nilo', nameAr: 'نيلو',    prophet: 'Moussa',    ar: 'موسى',          as: true, bg: '#d6ead0', videos: ['oSS6knrQhO8', '3JIiVSrPNDE', 'ZsklLkox8aY'] },
+  { slug: 'qitmir',  name: 'Qitmir', nameAr: 'قطمير',  prophet: 'Al-Kahf',   ar: 'أصحاب الكهف',   as: false, bg: '#f0dcc4', videos: ['OvfA6ZMUn9E'] },
+  { slug: 'salam',   name: 'Salam', nameAr: 'سلام',   prophet: 'Adam',      ar: 'آدم',           as: true, bg: '#d4efd0', videos: ['T3opGNWTQdA', 'rE-x-ZA7ISo'] },
+  { slug: 'arnoub',  name: 'Arnoub', nameAr: 'أرنوب',  prophet: 'Adam',      ar: 'آدم',           as: true, bg: '#eee4d6', videos: ['T3opGNWTQdA', 'rE-x-ZA7ISo'] },
+  { slug: 'amira',   name: 'Amira', nameAr: 'أميرة',   prophet: 'Soulayman', ar: 'سليمان',        as: true, bg: '#f6d6cc', videos: ['rFLnZKPyOJA', 'NdnsC9pZxLs'] },
+  { slug: 'wael',    name: 'Wael', nameAr: 'وائل',    prophet: 'Youssef',   ar: 'يوسف',          as: true, bg: '#c9d3e3', videos: ['bYr9CRodEUU', '_SGcPDlUqpM'] },
+  { slug: 'hamouda', name: 'Hamouda', nameAr: 'حمودة', prophet: 'Lout',      ar: 'لوط',           as: true, bg: '#efe0c6', videos: ['XZhFNJjZviY'] },
 ];
-const chars = await onlyPublic(characters, ['video']);
+// Les épisodes en ligne d'abord, les « Bientôt » à la fin.
+const firstPublic = async (ids: string[]) => { for (const id of ids) if (await isPublic(id)) return id; return null; };
+const chars = (await Promise.all(characters.map(async (c) => ({ ...c, video: await firstPublic(c.videos) })))).sort((a, b) => Number(!a.video) - Number(!b.video));
 ---
 <section id="personnages">
   <div class="container">
@@ -27,14 +31,19 @@ const chars = await onlyPublic(characters, ['video']);
     </div>
     <div class="chars">
       {chars.map((c) => (
-        <a class="char" href={c.video ? `https://www.youtube.com/watch?v=${c.video}` : channel} target="_blank" rel="noopener"
+        <a class:list={['char', { 'is-soon': !c.video }]} href={c.video ? `https://www.youtube.com/watch?v=${c.video}` : channel} target="_blank" rel="noopener"
            aria-label={`${c.name}, qui raconte l'histoire de ${c.prophet}${c.video ? '' : ' (bientôt)'}`}>
-          <div class="char-disc" style={`background:${c.bg}`}>
+          <div class="char-scene" style={`--c:${c.bg}`}>
             <img src={`${base}/personnages/${c.slug}.webp`} alt="" loading="lazy" width="120" height="120" />
+            {c.video
+              ? <span class="char-play" aria-hidden="true">▶</span>
+              : <span class="char-soon">🌙 <span data-i18n="chars.soon">Bientôt</span></span>}
           </div>
-          <b>{c.name}</b>
-          <span>{c.prophet}</span>
-          {!c.video && <span class="char-soon" data-i18n="chars.soon">Bientôt</span>}
+          <b><span class="p-lat">{c.name}</span><span class="p-ar" lang="ar">{c.nameAr}</span></b>
+          <span class="char-story">
+            <span class="p-lat">{c.prophet}{c.as && <small> (AS)</small>}</span>
+            <span class="p-ar" lang="ar">{c.ar}{c.as && <small> {c.prophet === 'Maryam' ? 'عليها السلام' : 'عليه السلام'}</small>}</span>
+          </span>
         </a>
       ))}
     </div>
