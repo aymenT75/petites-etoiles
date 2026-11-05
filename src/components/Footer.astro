@@ -45,9 +45,9 @@ const link = (hash: string) => home ? hash : `${base}/${hash}`;
         </div>
         <div class="footer-nav-group">
           <div class="footer-nav-title" data-i18n="footer.legal">Légal</div>
-          <a href="#" data-i18n="footer.privacy">Confidentialité</a>
-          <a href="#" data-i18n="footer.terms">CGU</a>
-          <a href="#" data-i18n="footer.cookies">Cookies</a>
+          <a href={`${base}/confidentialite/`} data-i18n="footer.privacy">Confidentialité</a>
+          <a href={`${base}/conditions/`} data-i18n="footer.terms">CGU</a>
+          <a href={`${base}/confidentialite/`} data-i18n="footer.cookies">Cookies</a>
         </div>
       </div>
     </div>

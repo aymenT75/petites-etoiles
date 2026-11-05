@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Conditions d'utilisation | Petites Étoiles">
+  <main class="legal">
+    <p class="legal-back"><a href={`${base}/`}>← Petites Étoiles</a></p>
+    <article>
+<h1>Conditions d'utilisation</h1>
+<p class="date">Dernière mise à jour : 5 novembre 2026</p>
+
+<h2>Objet</h2>
+<p>Ces conditions s'appliquent à l'utilisation du site najomsaghira.com, édité par Noviateck. En utilisant le site, vous les acceptez.</p>
+
+<h2>Le site</h2>
+<p>Le site présente les chansons et les histoires de Petites Étoiles. Il est gratuit et ne demande pas de compte. Nous pouvons le modifier ou l'interrompre à tout moment.</p>
+
+<h2>Contenus</h2>
+<p>Les chansons, vidéos, illustrations, personnages, textes et logos sont protégés. Vous pouvez les regarder et les écouter pour un usage personnel, et partager les liens. Toute autre reproduction ou réutilisation demande notre accord écrit, sauf conditions particulières indiquées pour une ressource précise, comme le pack gratuit pour les écoles et les mosquées.</p>
+
+<h2>Services externes</h2>
+<p>Le site renvoie vers YouTube, Spotify, Instagram et TikTok. Nous ne contrôlons pas ces services, qui ont leurs propres conditions. Les vidéos sont soumises aux <a href="https://www.youtube.com/t/terms">conditions d'utilisation de YouTube</a>.</p>
+
+<h2>Notre outil de gestion YouTube</h2>
+<p>Petites Étoiles Studio est un outil interne, réservé à la gestion de nos propres chaînes. Il n'est pas proposé au public.</p>
+
+<h2>Responsabilité</h2>
+<p>Nous faisons attention à l'exactitude des contenus et au bon fonctionnement du site, sans pouvoir garantir qu'il soit toujours disponible ou sans erreur. Rien dans ces conditions ne limite les droits que la loi vous accorde.</p>
+
+<h2>Droit applicable et contact</h2>
+<p>Ces conditions sont soumises au droit français. Pour toute question : <a href="mailto:petitesetoiles.officiel@gmail.com">petitesetoiles.officiel@gmail.com</a>. Vos données sont traitées comme indiqué dans notre politique de confidentialité.</p>
+      <hr>
+      <div lang="en">
+<h1>Terms of Service</h1>
+<p class="date">Last updated: November 5, 2026</p>
+
+<h2>Scope</h2>
+<p>These terms apply to your use of the website najomsaghira.com, published by Noviateck. By using the website, you accept them.</p>
+
+<h2>The website</h2>
+<p>The website presents the songs and stories of Petites Étoiles. It is free and requires no account. We may change or stop it at any time.</p>
+
+<h2>Content</h2>
+<p>The songs, videos, illustrations, characters, texts and logos are protected. You may watch and listen to them for personal use, and share links. Any other copying or reuse requires our written consent, unless specific terms are stated for a given resource, such as the free pack for schools and mosques.</p>
+
+<h2>External services</h2>
+<p>The website links to YouTube, Spotify, Instagram and TikTok. We do not control these services, which have their own terms. Videos are subject to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>.</p>
+
+<h2>Our YouTube management tool</h2>
+<p>Petites Étoiles Studio is an internal tool, reserved for managing our own channels. It is not offered to the public.</p>
+
+<h2>Liability</h2>
+<p>We take care over the accuracy of the content and the proper working of the website, but cannot guarantee that it will always be available or error-free. Nothing in these terms limits the rights the law gives you.</p>
+
+<h2>Governing law and contact</h2>
+<p>These terms are governed by French law. For any question: <a href="mailto:petitesetoiles.officiel@gmail.com">petitesetoiles.officiel@gmail.com</a>. Your data is handled as described in our Privacy Policy.</p>
+      </div>
+    </article>
+  </main>
+  <Footer home={false} />
+</Layout>
+<style is:global>
+  .legal { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; color: var(--text); line-height: 1.65; }
+  .legal article { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px; }
+  .legal h1 { font-size: 30px; line-height: 1.2; margin: 0 0 4px; color: var(--mer); }
+  .legal h2 { font-size: 20px; margin: 28px 0 6px; }
+  .legal p, .legal ul { margin: 0 0 12px; }
+  .legal ul { padding-left: 22px; list-style: disc; }
+  .legal a { color: var(--mer); text-decoration: underline; overflow-wrap: anywhere; }
+  .legal .date { color: var(--text-muted); margin-bottom: 20px; }
+  .legal hr { border: 0; border-top: 2px solid var(--border); margin: 36px 0; }
+  .legal-back { font-weight: 700; }
+  @media (max-width: 560px) { .legal article { padding: 20px 18px; } .legal h1 { font-size: 25px; } }
+</style>
